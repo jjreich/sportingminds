@@ -36,7 +36,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'jquery-rails'
 gem 'simple_form'
-gem 'foundation-rails'
+gem 'foundation-rails', '~> 6.4.3'
 gem 'autoprefixer-rails'
 
 group :development, :test do
