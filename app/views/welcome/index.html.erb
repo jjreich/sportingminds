@@ -1,5 +1,5 @@
-<div data-sticky-container>
-	<div class="top-bar" data-topbar data-sticky data-options="marginTop:0;" style="width:100%">
+<div class="grid-x gray">
+	<div class="top-bar cell large-8 large-offset-2 medium-10 medium-offset-1" data-topbar>
 	  <div class="top-bar-left">
 	    <ul class="dropdown menu" data-dropdown-menu>
 	      <li class="menu-text"><%= image_tag("SportingMindsTransparent.png", width: "200", :alt => "Sporting Minds") %></li>
@@ -65,4 +65,32 @@
     <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
   </nav>
 </div>
+
+<div class="grid-x gray">
+	<div class="cell large-8 large-offset-2 medium-10 medium-offset-1">
+		<div class="grid-x grid-padding-x">
+			<div class="cell">
+				<h1 class="text-center">Services</h1>
+			</div>
+		</div>		
+
+		<div class="grid-x grid-padding-x grid-padding-y">
+			<div class="cell medium-4">
+				<%= image_tag("SoccerPlayer.png", height: "100%", :alt => "Individual Training") %>
+				<br/><br/>
+				<h4 class="text-center">Individual Mental Training</h4>
+			</div>	
+			<div class="cell medium-4">
+				<%= image_tag("Team.png", height: "100%", :alt => "Teamwork Training") %>
+				<br/><br/>
+				<h4 class="text-center">Team Development</h4>
+			</div>
+			<div class="cell medium-4">
+				<%= image_tag("Lecturer.png", height: "100%", :alt => "Teamwork Training") %>
+				<br/><br/>
+				<h4 class="text-center">Classes and Workshops</h4>
+		</div>
+	</div>
+</div>
+
 
