@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :journal_entries
   resources :sports
   resources :training_types
