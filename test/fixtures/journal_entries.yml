@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sport: MyString
+  dateTimeOfTraining: 2018-12-19 15:43:01
+  duration: 1
+  organizedPractice: false
+  trainingAccomplished: MyText
+  motivationLevel: 1
+  performanceLevel: 1
+
+two:
+  sport: MyString
+  dateTimeOfTraining: 2018-12-19 15:43:01
+  duration: 1
+  organizedPractice: false
+  trainingAccomplished: MyText
+  motivationLevel: 1
+  performanceLevel: 1

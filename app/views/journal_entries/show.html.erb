@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sport:</strong>
+  <%= @journal_entry.sport %>
+</p>
+
+<p>
+  <strong>Datetimeoftraining:</strong>
+  <%= @journal_entry.dateTimeOfTraining %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @journal_entry.duration %>
+</p>
+
+<p>
+  <strong>Organizedpractice:</strong>
+  <%= @journal_entry.organizedPractice %>
+</p>
+
+<p>
+  <strong>Trainingaccomplished:</strong>
+  <%= @journal_entry.trainingAccomplished %>
+</p>
+
+<p>
+  <strong>Motivationlevel:</strong>
+  <%= @journal_entry.motivationLevel %>
+</p>
+
+<p>
+  <strong>Performancelevel:</strong>
+  <%= @journal_entry.performanceLevel %>
+</p>
+
+<%= link_to 'Edit', edit_journal_entry_path(@journal_entry) %> |
+<%= link_to 'Back', journal_entries_path %>

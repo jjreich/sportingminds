@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Training Types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @training_types.each do |training_type| %>
+      <tr>
+        <td><%= training_type.name %></td>
+        <td><%= link_to 'Show', training_type %></td>
+        <td><%= link_to 'Edit', edit_training_type_path(training_type) %></td>
+        <td><%= link_to 'Destroy', training_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Training Type', new_training_type_path %>

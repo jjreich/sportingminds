@@ -1,0 +1,19 @@
+
+<%= simple_form_for(@journal_entry) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :sport, label: "Sport", collection: @sports, label_method: :name, prompt: "Select the sport you would like to assign to this journal." %>
+    <%= f.input :dateTimeOfTraining %>
+    <%= f.input :duration %>
+    <%= f.input :organizedPractice %>
+    <%= f.input :trainingAccomplished %>
+    <%= f.input :motivationLevel %>
+    <%= f.input :performanceLevel %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

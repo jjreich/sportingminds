@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Journal Entries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sport</th>
+      <th>Datetimeoftraining</th>
+      <th>Duration</th>
+      <th>Organizedpractice</th>
+      <th>Trainingaccomplished</th>
+      <th>Motivationlevel</th>
+      <th>Performancelevel</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @journal_entries.each do |journal_entry| %>
+      <tr>
+        <td><%= journal_entry.sport %></td>
+        <td><%= journal_entry.dateTimeOfTraining %></td>
+        <td><%= journal_entry.duration %></td>
+        <td><%= journal_entry.organizedPractice %></td>
+        <td><%= journal_entry.trainingAccomplished %></td>
+        <td><%= journal_entry.motivationLevel %></td>
+        <td><%= journal_entry.performanceLevel %></td>
+        <td><%= link_to 'Show', journal_entry %></td>
+        <td><%= link_to 'Edit', edit_journal_entry_path(journal_entry) %></td>
+        <td><%= link_to 'Destroy', journal_entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Journal Entry', new_journal_entry_path %>
