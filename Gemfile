@@ -34,6 +34,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'rolify'
 gem 'cancancan', '~> 2.0'
+gem 'ancestry'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
