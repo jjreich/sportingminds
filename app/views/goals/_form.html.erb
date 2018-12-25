@@ -5,6 +5,7 @@
 
   <div class="form-inputs">
     <%= f.hidden_field :user_id %>
+    <%= f.input :name %>
     <%= f.input :sport, label: "Sport", collection: @sports, label_method: :name, prompt: "Select the sport you would like to assign to this journal." %>
     <%= f.input :goalType, label: "Goal Type", collection: @goalTypes, label_method: :name, prompt: "Select the type of goal this is." %>
     <%= f.input :goalStartDate %>

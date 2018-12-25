@@ -15,7 +15,7 @@ class User < ApplicationRecord
 
   end
 
-  def assigne_default_role
+  def assign_default_role
   	self.add_role(:athlete) if self.roles.blank?
   end
 end

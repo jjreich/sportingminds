@@ -23,3 +23,11 @@
  .gray {
  	background-color: #e6e6e6;
  }
+
+ .top-bar li {
+    a {
+        &:hover {
+            background-color: transparent;
+        }
+    }
+}

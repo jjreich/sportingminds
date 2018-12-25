@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>User</th>
+      <th>Name</th>
       <th>Sport</th>
       <th>Goaltype</th>
       <th>Goalstartdate</th>
@@ -27,7 +28,8 @@
   <tbody>
     <% @goals.each do |goal| %>
       <tr>
-        <td><%= User.find(goal.sport).email %></td>
+        <td><%= goal.name %></td>
+        <td><%= User.find(goal.user_id).email %></td>
         <td><%= Sport.find(goal.sport).name %></td>
         <td><%= goal.goalType %></td>
         <td><%= goal.goalStartDate %></td>

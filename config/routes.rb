@@ -9,4 +9,6 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
+  get 'athleteapp', to: 'athleteapp#index'
+
 end
