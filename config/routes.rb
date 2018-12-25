@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :goals
   devise_for :users
   resources :journal_entries
   resources :sports

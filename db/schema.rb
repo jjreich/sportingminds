@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181220003139) do
+ActiveRecord::Schema.define(version: 20181225172608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,27 @@ ActiveRecord::Schema.define(version: 20181220003139) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "goals", force: :cascade do |t|
+    t.string "sport"
+    t.string "goalType"
+    t.date "goalStartDate"
+    t.date "goalEndDate"
+    t.boolean "training"
+    t.boolean "recurring"
+    t.string "goalInterval"
+    t.integer "goalNumber"
+    t.string "trainingType"
+    t.string "description"
+    t.string "accountabilityPartners", default: [], array: true
+    t.float "percentComplete"
+    t.boolean "active"
+    t.boolean "complete"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_goals_on_user_id"
   end
 
   create_table "journal_entries", force: :cascade do |t|

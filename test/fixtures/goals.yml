@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sport: MyString
+  goalType: MyString
+  goalStartDate: 2018-12-25
+  goalEndDate: 2018-12-25
+  training: false
+  recurring: false
+  goalInterval: MyString
+  goalNumber: 1
+  trainingType: MyString
+  description: MyString
+  accountabilityPartners: 
+  percentComplete: 1.5
+  active: false
+  complete: false
+
+two:
+  sport: MyString
+  goalType: MyString
+  goalStartDate: 2018-12-25
+  goalEndDate: 2018-12-25
+  training: false
+  recurring: false
+  goalInterval: MyString
+  goalNumber: 1
+  trainingType: MyString
+  description: MyString
+  accountabilityPartners: 
+  percentComplete: 1.5
+  active: false
+  complete: false

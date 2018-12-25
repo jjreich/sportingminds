@@ -1,0 +1,27 @@
+
+<%= simple_form_for(@goal) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.hidden_field :user_id %>
+    <%= f.input :sport, label: "Sport", collection: @sports, label_method: :name, prompt: "Select the sport you would like to assign to this journal." %>
+    <%= f.input :goalType, label: "Goal Type", collection: @goalTypes, label_method: :name, prompt: "Select the type of goal this is." %>
+    <%= f.input :goalStartDate %>
+    <%= f.input :goalEndDate %>
+    <%= f.input :training %>
+    <%= f.input :recurring %>
+    <%= f.input :goalInterval %>
+    <%= f.input :goalNumber %>
+    <%= f.input :trainingType, label: "Training Type", collection: @trainingTypes, label_method: :name, prompt: "Select the type of training this will require to complete." %>
+    <%= f.input :description %>
+    <%= f.input :accountabilityPartners %>
+    <%= f.input :percentComplete %>
+    <%= f.input :active %>
+    <%= f.input :complete %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

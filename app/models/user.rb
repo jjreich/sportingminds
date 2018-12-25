@@ -4,6 +4,7 @@ class User < ApplicationRecord
   after_create :assign_default_role
 
   has_many :journal_entries
+  has_many :goals
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
