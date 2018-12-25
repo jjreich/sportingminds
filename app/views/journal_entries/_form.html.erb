@@ -4,6 +4,7 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
+    <%= f.input :user_id %>
     <%= f.input :sport, label: "Sport", collection: @sports, label_method: :name, prompt: "Select the sport you would like to assign to this journal." %>
     <%= f.input :dateTimeOfTraining %>
     <%= f.input :duration %>

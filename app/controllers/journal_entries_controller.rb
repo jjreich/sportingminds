@@ -14,7 +14,7 @@ class JournalEntriesController < ApplicationController
 
   # GET /journal_entries/new
   def new
-    @journal_entry = JournalEntry.new
+    @journal_entry = JournalEntry.new(:user_id => current_user.id)
     @sports = Sport.all
 
   end
@@ -71,6 +71,6 @@ class JournalEntriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def journal_entry_params
-      params.require(:journal_entry).permit(:sport, :dateTimeOfTraining, :duration, :organizedPractice, :trainingAccomplished, :motivationLevel, :performanceLevel)
+      params.require(:journal_entry).permit(:sport, :dateTimeOfTraining, :duration, :organizedPractice, :trainingAccomplished, :motivationLevel, :performanceLevel, :user_id)
     end
 end

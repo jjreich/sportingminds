@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>User</th>
       <th>Sport</th>
       <th>Datetimeoftraining</th>
       <th>Duration</th>
@@ -19,7 +20,8 @@
   <tbody>
     <% @journal_entries.each do |journal_entry| %>
       <tr>
-        <td><%= journal_entry.sport %></td>
+        <td><%= User.find(journal_entry.user_id).email %></td>
+        <td><%= Sport.find(journal_entry.sport).name %></td>
         <td><%= journal_entry.dateTimeOfTraining %></td>
         <td><%= journal_entry.duration %></td>
         <td><%= journal_entry.organizedPractice %></td>
