@@ -4,7 +4,11 @@ class GoalsController < ApplicationController
   # GET /goals
   # GET /goals.json
   def index
-    @goals = Goal.all
+    if (current_user.has_role? :admin) 
+      @goals = Goal.all
+    elsif (current_user.has_role? :athlete)
+      @goals = Goal.where("user_id = ?", current_user.id)
+    end
   end
 
   # GET /goals/1

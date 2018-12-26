@@ -7,19 +7,10 @@
 	      		<%= image_tag("SportingMindsTransparent.png", width: "200", :alt => "Sporting Minds") %>
 	      	<% end %>
 	      	</li>
-	      <li><a href="#">About</a></li>
-	      <li>
-	        <a href="#">Services</a>
-	        <ul class="menu vertical">
-	          <li><a href="#">Individual Mental Training</a></li>
-	          <li><a href="#">Team Development</a></li>
-	          <li><a href="#">Classes/Workshops</a></li>
-	          <li><a href="#">Assessments</a></li>
-	        </ul>
-	      </li>
-	      <li><a href="#">Events</a></li>
-	      <li><a href="#">Resources</a></li>
-	      <li><a href="#">Contact</a></li>
+	      <li><%= link_to "Goals", goals_path, :class => "", remote: true %></li>
+	      <li><%= link_to "Training Log", journal_entries_path, :class => "", remote: true %></li>
+	      <li><a href="#">User Account</a></li>
+	      <li><a href="#">Help</a></li>
 	      <% if user_signed_in? %>
 	        <li><a><%= current_user.email %></a></li>
 	        <li><%= link_to "Sign out", destroy_user_session_path,:method => 'delete' %></li>
@@ -29,12 +20,22 @@
 		</ul>
 	  </div>
 	  <div class="top-bar-right">
-	    <ul class="menu">
-	      <li><button type="button" class="alert button">Request Appointment</button></li>
-	    </ul>
 	  </div>
 	</div>
 </div>
+
+<div id="applicationContent">
+
+	<% if user_signed_in? %>
+
+	  <% if current_user.has_role? :athlete %>
+	    
+	  <% end %>
+
+	<% end %>
+
+</div>
+
 
 
 
