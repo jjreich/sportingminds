@@ -1,0 +1,112 @@
+<p id="notice"><%= notice %></p>
+
+
+
+<!--
+
+<p>
+  <strong>Name:</strong>
+  <%= @goal.name %>
+</p>
+
+<p>
+  <strong>Sport:</strong>
+  <%= @goal.sport %>
+</p>
+
+<p>
+  <strong>Goaltype:</strong>
+  <%= @goal.goalType %>
+</p>
+
+<p>
+  <strong>Goalstartdate:</strong>
+  <%= @goal.goalStartDate %>
+</p>
+
+<p>
+  <strong>Goalenddate:</strong>
+  <%= @goal.goalEndDate %>
+</p>
+
+<p>
+  <strong>Training:</strong>
+  <%= @goal.training %>
+</p>
+
+<p>
+  <strong>Recurring:</strong>
+  <%= @goal.recurring %>
+</p>
+
+<p>
+  <strong>Goalinterval:</strong>
+  <%= @goal.goalInterval %>
+</p>
+
+<p>
+  <strong>Goalnumber:</strong>
+  <%= @goal.goalNumber %>
+</p>
+
+<p>
+  <strong>Trainingtype:</strong>
+  <%= @goal.trainingType %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @goal.description %>
+</p>
+
+<p>
+  <strong>Accountabilitypartners:</strong>
+  <%= @goal.accountabilityPartners %>
+</p>
+
+<p>
+  <strong>Percentcomplete:</strong>
+  <%= @goal.percentComplete %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @goal.active %>
+</p>
+
+<p>
+  <strong>Complete:</strong>
+  <%= @goal.complete %>
+</p>
+
+-->
+
+
+<div class="grid-x">
+  <div class="cell large-8 large-offset-2 medium-10 medium-offset-1 small-12">
+    <h2><%= @goal.name %></h2>
+      <p>
+        <strong>Goaltype:</strong>
+        <%= @goal.goalType %>
+      </p>
+
+      <p>
+        <strong>Goalstartdate:</strong>
+        <%= @goal.goalStartDate %>
+      </p>
+
+      <p>
+        <strong>Goalenddate:</strong>
+        <%= @goal.goalEndDate %>
+      </p>
+
+      <p>
+        <strong>Description:</strong>
+        <%= @goal.description %>
+      </p>
+
+
+    <%= link_to 'Return to Goals', goals_path, :class => "", remote: true %>
+
+  </div>
+</div>

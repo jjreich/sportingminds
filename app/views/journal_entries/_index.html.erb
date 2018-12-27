@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<!--
+
 <h1>Journal Entries</h1>
 
 <table>
@@ -36,6 +38,31 @@
   </tbody>
 </table>
 
-<br>
+-->
 
-<%= link_to 'New Journal Entry', new_journal_entry_path %>
+<div class="grid-x">
+  <div class="cell large-8 large-offset-2 medium-10 medium-offset-1 small-12">
+    <h2>Training Log</h2>
+    <% @journal_entries.each do |journal_entry| %>
+
+      <div class="grid-x grid-padding-x">
+        <div class="cell large-12">
+          <p class="text-left"><b><%= journal_entry.dateTimeOfTraining %></b> - <%= journal_entry.trainingAccomplished %> &nbsp
+
+            <%= link_to journal_entry do %> 
+              <%= image_tag("view24.png", width: "12", :alt => "view") %>
+            <% end %> &nbsp
+
+            <%= link_to edit_journal_entry_path(journal_entry) do %> 
+              <%= image_tag("edit24.png", width: "16", :alt => "edit") %>
+            <% end %>
+          </p>
+        </div>        
+      </div>
+    <% end %>
+
+    <%= link_to 'New Training Session', new_journal_entry_path %>
+  </div>
+</div>
+
+<br>

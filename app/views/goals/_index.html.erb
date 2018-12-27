@@ -76,19 +76,23 @@
 				<div class="cell large-12">
 					<p class="text-left"><span class="<%= className %>"> </span><b><%= goal.name %></b> - <%= goal.description %> &nbsp
 
-						<%= link_to goal do %> 
+						<%= link_to goal, :class => "", remote: true do %> 
 							<%= image_tag("view24.png", width: "12", :alt => "view") %>
 						<% end %> &nbsp
 
-						<%= link_to edit_goal_path(goal) do %> 
+						<%= link_to edit_goal_path(goal), :class => "", remote: true do %> 
 							<%= image_tag("edit24.png", width: "16", :alt => "edit") %>
-						<% end %>
+						<% end %> &nbsp
+
+            <%= link_to goal, method: :delete, data: { confirm: 'Are you sure?' }, :class => "", remote: true do %> 
+              <%= image_tag("trashRecycleBin.png", width: "16", :alt => "edit") %>
+            <% end %>
 					</p>
 				</div>				
 			</div>
 		<% end %>
 
-		<%= link_to 'New Goal', new_goal_path %>
+		<%= link_to 'New Goal', new_goal_path, :class => "", remote: true  %>
 	</div>
 </div>
 

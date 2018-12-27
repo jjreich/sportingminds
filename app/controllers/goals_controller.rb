@@ -33,9 +33,15 @@ class GoalsController < ApplicationController
   def create
     @goal = Goal.new(goal_params)
 
+    if (current_user.has_role? :admin) 
+      @goals = Goal.all
+    elsif (current_user.has_role? :athlete)
+      @goals = Goal.where("user_id = ?", current_user.id)
+    end
+
     respond_to do |format|
       if @goal.save
-        format.html { redirect_to @goal, notice: 'Goal was successfully created.' }
+        format.js 
         format.json { render :show, status: :created, location: @goal }
       else
         format.html { render :new }
@@ -47,8 +53,15 @@ class GoalsController < ApplicationController
   # PATCH/PUT /goals/1
   # PATCH/PUT /goals/1.json
   def update
+    if (current_user.has_role? :admin) 
+      @goals = Goal.all
+    elsif (current_user.has_role? :athlete)
+      @goals = Goal.where("user_id = ?", current_user.id)
+    end
+
     respond_to do |format|
       if @goal.update(goal_params)
+        format.js
         format.html { redirect_to @goal, notice: 'Goal was successfully updated.' }
         format.json { render :show, status: :ok, location: @goal }
       else
@@ -62,7 +75,15 @@ class GoalsController < ApplicationController
   # DELETE /goals/1.json
   def destroy
     @goal.destroy
+
+    if (current_user.has_role? :admin) 
+      @goals = Goal.all
+    elsif (current_user.has_role? :athlete)
+      @goals = Goal.where("user_id = ?", current_user.id)
+    end
+
     respond_to do |format|
+      format.js
       format.html { redirect_to goals_url, notice: 'Goal was successfully destroyed.' }
       format.json { head :no_content }
     end
