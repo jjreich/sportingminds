@@ -74,7 +74,7 @@
 
 			<div class="grid-x grid-padding-x">
 				<div class="cell large-12">
-					<p class="text-left"><span class="<%= className %>"> </span><b><%= goal.name %></b> - <%= goal.description %> &nbsp
+					<p class="text-left"><span class="<%= className %>"> </span><b><%= goal.name %></b> - <%= goal.description %> <%= goal.goalStartDate.strftime ("%m/%d/%y") %> - <%= goal.goalEndDate.strftime ("%m/%d/%y") %> &nbsp
 
 						<%= link_to goal, :class => "", remote: true do %> 
 							<%= image_tag("view24.png", width: "12", :alt => "view") %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181225202431) do
+ActiveRecord::Schema.define(version: 20181227184349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,12 @@ ActiveRecord::Schema.define(version: 20181225202431) do
     t.string "name"
     t.index ["ancestry"], name: "index_goals_on_ancestry"
     t.index ["user_id"], name: "index_goals_on_user_id"
+  end
+
+  create_table "goals_journal_entries", id: false, force: :cascade do |t|
+    t.bigint "goal_id", null: false
+    t.bigint "journal_entry_id", null: false
+    t.index ["goal_id", "journal_entry_id"], name: "index_goals_journal_entries_on_goal_id_and_journal_entry_id"
   end
 
   create_table "journal_entries", force: :cascade do |t|

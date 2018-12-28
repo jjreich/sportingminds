@@ -47,7 +47,7 @@
 
       <div class="grid-x grid-padding-x">
         <div class="cell large-12">
-          <p class="text-left"><b><%= journal_entry.dateTimeOfTraining %></b> - <%= journal_entry.trainingAccomplished %> &nbsp
+          <p class="text-left"><b><%= journal_entry.dateTimeOfTraining.strftime ("%m/%d/%y %l:%M%P") %> (<%= journal_entry.duration %> minutes)</b> - <%= journal_entry.trainingAccomplished %> &nbsp
 
             <%= link_to journal_entry do %> 
               <%= image_tag("view24.png", width: "12", :alt => "view") %>
@@ -55,6 +55,10 @@
 
             <%= link_to edit_journal_entry_path(journal_entry) do %> 
               <%= image_tag("edit24.png", width: "16", :alt => "edit") %>
+            <% end %> &nbsp
+
+            <%= link_to journal_entry, method: :delete, data: { confirm: 'Are you sure?' }, :class => "", remote: true do %> 
+              <%= image_tag("trashRecycleBin.png", width: "16", :alt => "edit") %>
             <% end %>
           </p>
         </div>        

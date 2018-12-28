@@ -40,5 +40,15 @@
   <%= @journal_entry.performanceLevel %>
 </p>
 
+<% @journal_entry.goal_ids.each do |goal_id| %>
+  <%= goal_id %>
+<% end %>
+
+      <% @journal_entry.goals.where(:active => true).each do |goal| %>
+        <%= link_to goal do %>
+          <%= goal.name %></br>
+        <% end %>
+      <% end %>
+
 <%= link_to 'Edit', edit_journal_entry_path(@journal_entry) %> |
 <%= link_to 'Back', journal_entries_path %>

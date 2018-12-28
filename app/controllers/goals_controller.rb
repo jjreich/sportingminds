@@ -97,6 +97,6 @@ class GoalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def goal_params
-      params.require(:goal).permit(:name, :sport, :goalType, :goalStartDate, :goalEndDate, :training, :recurring, :goalInterval, :goalNumber, :trainingType, :description, :accountabilityPartners, :percentComplete, :active, :complete, :user_id)
+      params.require(:goal).permit(:name, :sport, :goalType, :goalStartDate, :goalEndDate, :training, :recurring, :goalInterval, :goalNumber, :trainingType, :description, :accountabilityPartners, :percentComplete, :active, :complete, :user_id, :journal_entry_ids => [])
     end
 end

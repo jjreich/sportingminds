@@ -1,4 +1,8 @@
-<h1>New Journal Entry</h1>
+<% if @goal.present? %>
+	<h1>New <%= @goal.name %> entry</h1>
+<% else %>
+	<h1>New Journal Entry</h1>
+<% end %>
 
 <%= render 'form', journal_entry: @journal_entry %>
 

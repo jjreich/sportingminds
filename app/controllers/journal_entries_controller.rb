@@ -16,11 +16,30 @@ class JournalEntriesController < ApplicationController
   def new
     @journal_entry = JournalEntry.new(:user_id => current_user.id)
     @sports = Sport.all
+    if (current_user.has_role? :admin) 
+      @goals = Goal.all
+    elsif (current_user.has_role? :athlete)
+      @goals = Goal.where("user_id = ?", current_user.id)
+
+    end
+
+    if params[:goal_id].present?
+      @goal = Goal.find(params[:goal_id])
+      @journal_entry = JournalEntry.new(:user_id => current_user.id, :goal_ids => [@goal.id], :sport => @goal.sport, :trainingAccomplished => @goal.name)
+    else
+      @journal_entry = JournalEntry.new(:user_id => current_user.id)
+    end
 
   end
 
   # GET /journal_entries/1/edit
   def edit
+    @sports = Sport.all
+    if (current_user.has_role? :admin) 
+      @goals = Goal.all
+    elsif (current_user.has_role? :athlete)
+      @goals = Goal.where("user_id = ?", current_user.id)
+    end
   end
 
   # POST /journal_entries
@@ -71,6 +90,6 @@ class JournalEntriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def journal_entry_params
-      params.require(:journal_entry).permit(:sport, :dateTimeOfTraining, :duration, :organizedPractice, :trainingAccomplished, :motivationLevel, :performanceLevel, :user_id)
+      params.require(:journal_entry).permit(:sport, :dateTimeOfTraining, :duration, :organizedPractice, :trainingAccomplished, :motivationLevel, :performanceLevel, :user_id, :goal_ids => [])
     end
 end

@@ -105,6 +105,19 @@
         <%= @goal.description %>
       </p>
 
+      <h4>Training in support of this goal</h4>
+
+      <% @goal.journal_entries.each do |journal_entry| %>
+        <%= link_to journal_entry do %>
+          <p><%= journal_entry.trainingAccomplished %> <%= journal_entry.dateTimeOfTraining %></p>
+        <% end %>
+      <% end %>
+
+      <%= link_to "Add training for this goal", new_journal_entry_path(:goal_id => @goal.id) %>
+
+      </br>
+
+
 
     <%= link_to 'Return to Goals', goals_path, :class => "", remote: true %>
 

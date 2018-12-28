@@ -3,9 +3,24 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
+  <%= @goal %>
+
   <div class="form-inputs">
     <%= f.hidden_field :user_id %>
-    <%= f.input :sport, label: "Sport", collection: @sports, label_method: :name, prompt: "Select the sport you would like to assign to this journal." %>
+    <% if @goal.present? %>
+      <div class="hide">
+        <%= f.input :sport, label: "Sport", collection: @sports, label_method: :name, prompt: "Select the sport you would like to assign to this journal." %>
+      </div>
+    <% else %>
+        <%= f.input :sport, label: "Sport", collection: @sports, label_method: :name, prompt: "Select the sport you would like to assign to this journal." %>
+    <% end %>
+    <% if @goal.present? %>
+      <div class="hide">
+        <%= f.input :goal_ids, collection: @goals, as: :check_boxes, input_html: { multiple: true }  %>
+      </div>
+    <% else %>
+      <%= f.input :goal_ids, collection: @goals, as: :check_boxes, input_html: { multiple: true } %>
+    <% end %>
     <%= f.input :dateTimeOfTraining %>
     <%= f.input :duration %>
     <%= f.input :organizedPractice %>
