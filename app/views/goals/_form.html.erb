@@ -6,16 +6,43 @@
   <div class="form-inputs">
     <%= f.hidden_field :user_id %>
     <%= f.input :name %>
-    <%= f.input :sport, label: "Sport", collection: @sports, label_method: :name, prompt: "Select the sport you would like to assign to this journal." %>
-    <%= f.input :goalType, label: "Goal Type", collection: @goalTypes, label_method: :name, prompt: "Select the type of goal this is." %>
-    <%= f.input :goalStartDate %>
-    <%= f.input :goalEndDate %>
-    <%= f.input :training %>
-    <%= f.input :recurring %>
-    <%= f.input :goalInterval %>
-    <%= f.input :goalNumber %>
-    <%= f.input :trainingType, label: "Training Type", collection: @trainingTypes, label_method: :name, prompt: "Select the type of training this will require to complete." %>
-    <%= f.input :description %>
+    <%= f.input :sport, label: "Sport", collection: @sports, label_method: :name, prompt: "Is there a sport you would like to associate to this goal?" %>
+    <%= f.input :goalType, label: "Goal Type", collection: @goalTypes, label_method: :name, prompt: "What type of goal is this?" %>
+
+    <div class="show" id="goalStartDate">
+      <%= f.input :goalStartDate %>
+    </div>
+
+    <div class="show">
+      <%= f.input :goalEndDate %>
+    </div>
+
+    
+    <div class="hide">
+      <%= f.input :training %>
+    </div>
+    
+    <div class="hide">
+      <%= f.input :recurring %>
+    </div>
+
+    <div class="hide">
+      <%= f.input :goalInterval %>
+    </div>
+
+    <div class="hide">
+      <%= f.input :goalNumber %>
+    </div>
+
+    <div class="hide">
+      <%= f.input :trainingType, label: "Training Type", collection: @trainingTypes, label_method: :name, prompt: "Select the type of training this will require to complete." %>
+    </div>
+
+    <div class="">
+      <%= f.input :description %>
+    </div>
+
+
     <%= f.input :accountabilityPartners %>
     <%= f.input :percentComplete %>
     <%= f.input :active %>
@@ -26,3 +53,14 @@
     <%= f.button :submit %>
   </div>
 <% end %>
+
+<script>
+  $( "#goal_goalType" ).change(function() {
+    if ($( "#goal_goalType" ).val() == "1" ) {
+      $( "#goalStartDate" ).removeClass( "show" ).addClass( "hide" );
+    } else if ($( "#goal_goalType" ).val() == "2" ) {
+      $( "#goalStartDate" ).removeClass( "hide" ).addClass( "show" );
+    }
+
+});
+</script>
