@@ -5,9 +5,9 @@ class GoalsController < ApplicationController
   # GET /goals.json
   def index
     if (current_user.has_role? :admin) 
-      @goals = Goal.all
+      @goals = Goal.all.order(:goalEndDate)
     elsif (current_user.has_role? :athlete)
-      @goals = Goal.where(:user_id => current_user.id, :active => true)
+      @goals = Goal.where(:user_id => current_user.id, :active => true).order(:goalEndDate)
     end
   end
 

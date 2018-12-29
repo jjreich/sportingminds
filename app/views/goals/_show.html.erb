@@ -82,22 +82,13 @@
 -->
 
 
-<div class="grid-x">
+<div class="grid-x grid-padding-x">
   <div class="cell large-8 large-offset-2 medium-10 medium-offset-1 small-12">
-    <h2><%= @goal.name %> for <%= Sport.find(@goal.sport).name %></h2> 
-      <p>
-        A <%= GoalType.find(@goal.goalType).name %> Goal
-      </p>
+    <h2><%= @goal.name %> <%= image_tag("soccerBall.png", width: "36", :alt => "soccer") %></h2> 
 
-      <p>
-        <strong>Goalstartdate:</strong>
-        <%= @goal.goalStartDate %>
-      </p>
-
-      <p>
-        <strong>Goalenddate:</strong>
-        <%= @goal.goalEndDate %>
-      </p>
+      <b>
+        <%= @goal.goalStartDate.strftime ("%m/%d/%y") %> - <%= @goal.goalEndDate.strftime ("%m/%d/%y") %>
+      </b>
 
       <p>
         <strong>Description:</strong>
@@ -106,21 +97,25 @@
 
       <h4>Training in support of this goal</h4>
 
-      <% trainingCount = 0 %>
-
       <% @goal.journal_entries.each do |journal_entry| %>
         <%= link_to journal_entry do %>
-          <p><%= journal_entry.trainingAccomplished %> <%= journal_entry.dateTimeOfTraining %></p>
-        <% end %>
 
-        <% if journal_entry.duration.present? && @goal.trainingTimeInterval.present? %>
-          <% if journal_entry.duration >= @goal.trainingTimeInterval %>
-            <% trainingCount += 1 %>
+          <% journalClass = "" %>
+          <% if journal_entry.duration < @goal.trainingTimeInterval %>
+            <% journalClass = "myBlackButton" %>
+          <% elsif journal_entry.motivationLevel >= 7 && journal_entry.performanceLevel >= 7 %>
+            <% journalClass = "myGreenButton" %>
+          <% elsif journal_entry.motivationLevel >= 4 && journal_entry.performanceLevel >= 4 %>
+            <% journalClass = "myYellowButton" %>
+          <% else %>
+            <% journalClass = "myRedButton" %>
           <% end %>
+
+          <p>&nbsp &nbsp<span class="<%= journalClass %>"></span> <%= journal_entry.dateTimeOfTraining.strftime ("%m/%d/%y %l:%M%P") %> - <%= journal_entry.trainingAccomplished %> for <%= journal_entry.duration %> minutes.</p>
+
         <% end %>
       <% end %>
 
-      Successful training count is <%= trainingCount %>
 
 
 

@@ -3,7 +3,7 @@ class Goal < ApplicationRecord
 	belongs_to :user
 	has_and_belongs_to_many :journal_entries
 
-	before_save :adjust_completion_percentage
+	before_save :adjust_completion_percentage, :is_complete?
 
 	private
 
@@ -25,5 +25,25 @@ class Goal < ApplicationRecord
 		
 		self.percentComplete = percentageComplete
 	end
+
+	def is_complete?
+
+		trainingCount = 0
+
+		self.journal_entries.each do |journal_entry|
+			if journal_entry.duration.present? && self.trainingTimeInterval.present? 
+      			if journal_entry.duration >= self.trainingTimeInterval 
+        			trainingCount += 1
+      			end
+    		end
+    	end
+
+    	if trainingCount >= self.goalNumber
+    		self.complete = true
+    	else 
+    		self.complete = false
+    	end
+
+	end 
 
 end

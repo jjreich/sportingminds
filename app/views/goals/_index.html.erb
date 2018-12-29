@@ -56,15 +56,16 @@
 
 -->
 
-<div class="grid-x">
+<div class="grid-x grid-padding-x">
 	<div class="cell large-8 large-offset-2 medium-10 medium-offset-1 small-12">
 		<h2>Goals</h2>
 		<% @goals.each do |goal| %>
 			<% goalTimeInterval = (goal.goalEndDate - goal.goalStartDate).to_f %>
 			<% daysSinceGoalStartDate = (Date.today - goal.goalStartDate).to_f %>
 			<% timePercentagePassedForGoal = daysSinceGoalStartDate/goalTimeInterval %>
-
-			<% if (goal.percentComplete >= timePercentagePassedForGoal) %>
+      <% if goal.percentComplete >= 1.0 or goal.complete == true %>
+        <% className = "myBlueButton" %>
+			<% elsif (goal.percentComplete >= timePercentagePassedForGoal) %>
 				<% className = "myGreenButton" %>
 			<% elsif (goal.percentComplete >= timePercentagePassedForGoal-0.1) %>
 				<% className = "myYellowButton" %>
@@ -74,7 +75,7 @@
 
 			<div class="grid-x grid-padding-x">
 				<div class="cell large-12">
-					<p class="text-left"><span class="<%= className %>"> </span><b><%= goal.name %></b> - <%= goal.description %> <%= goal.goalStartDate.strftime ("%m/%d/%y") %> - <%= goal.goalEndDate.strftime ("%m/%d/%y") %> &nbsp
+					<p class="text-left">&nbsp &nbsp<span class="<%= className %>"> </span><b><%= goal.name %></b> - <%= goal.description %> <%= goal.goalStartDate.strftime ("%m/%d/%y") %> - <%= goal.goalEndDate.strftime ("%m/%d/%y") %> &nbsp
 
 						<%= link_to goal, :class => "", remote: true do %> 
 							<%= image_tag("view24.png", width: "12", :alt => "view") %>

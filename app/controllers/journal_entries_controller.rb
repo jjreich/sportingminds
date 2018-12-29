@@ -4,7 +4,7 @@ class JournalEntriesController < ApplicationController
   # GET /journal_entries
   # GET /journal_entries.json
   def index
-    @journal_entries = JournalEntry.all
+    @journal_entries = JournalEntry.all.order(:dateTimeOfTraining).reverse
   end
 
   # GET /journal_entries/1
