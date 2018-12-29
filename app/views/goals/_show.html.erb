@@ -84,10 +84,9 @@
 
 <div class="grid-x">
   <div class="cell large-8 large-offset-2 medium-10 medium-offset-1 small-12">
-    <h2><%= @goal.name %></h2>
+    <h2><%= @goal.name %> for <%= Sport.find(@goal.sport).name %></h2> 
       <p>
-        <strong>Goaltype:</strong>
-        <%= @goal.goalType %>
+        A <%= GoalType.find(@goal.goalType).name %> Goal
       </p>
 
       <p>
@@ -107,11 +106,23 @@
 
       <h4>Training in support of this goal</h4>
 
+      <% trainingCount = 0 %>
+
       <% @goal.journal_entries.each do |journal_entry| %>
         <%= link_to journal_entry do %>
           <p><%= journal_entry.trainingAccomplished %> <%= journal_entry.dateTimeOfTraining %></p>
         <% end %>
+
+        <% if journal_entry.duration.present? && @goal.trainingTimeInterval.present? %>
+          <% if journal_entry.duration >= @goal.trainingTimeInterval %>
+            <% trainingCount += 1 %>
+          <% end %>
+        <% end %>
       <% end %>
+
+      Successful training count is <%= trainingCount %>
+
+
 
       <%= link_to "Add training for this goal", new_journal_entry_path(:goal_id => @goal.id) %>
 

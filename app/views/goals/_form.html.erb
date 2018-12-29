@@ -16,7 +16,6 @@
     <div class="show">
       <%= f.input :goalEndDate %>
     </div>
-
     
     <div class="hide">
       <%= f.input :training %>
@@ -26,15 +25,21 @@
       <%= f.input :recurring %>
     </div>
 
-    <div class="hide">
-      <%= f.input :goalInterval %>
+    
+
+    <div class="show">
+      <%= f.input :goalInterval, label: "Interval", collection: ["Daily", "Weekly", "Monthly", "Annually"], prompt: "How often do you wish to accomplish this goal?" %>
     </div>
 
-    <div class="hide">
-      <%= f.input :goalNumber %>
+    <div class="show">
+      <%= f.input :goalNumber, label: "Number to Training Events", prompt: "How many times during the interval you selected do you wish to conduct your training?" %>
     </div>
 
-    <div class="hide">
+    <div class="show">
+      <%= f.input :trainingTimeInterval, label: "Length of Training Events", prompt: "What is the minimum training time each day for this goal?" %>
+    </div>
+
+    <div class="show">
       <%= f.input :trainingType, label: "Training Type", collection: @trainingTypes, label_method: :name, prompt: "Select the type of training this will require to complete." %>
     </div>
 
@@ -60,7 +65,8 @@
       $( "#goalStartDate" ).removeClass( "show" ).addClass( "hide" );
     } else if ($( "#goal_goalType" ).val() == "2" ) {
       $( "#goalStartDate" ).removeClass( "hide" ).addClass( "show" );
-    }
+    } else if ($( "#goal_goalType" ).val() == "2" ) {
+      $( "#goalStartDate" ).removeClass( "hide" ).addClass( "show" );
 
 });
 </script>

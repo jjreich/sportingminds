@@ -7,7 +7,7 @@ class GoalsController < ApplicationController
     if (current_user.has_role? :admin) 
       @goals = Goal.all
     elsif (current_user.has_role? :athlete)
-      @goals = Goal.where("user_id = ?", current_user.id)
+      @goals = Goal.where(:user_id => current_user.id, :active => true)
     end
   end
 
@@ -97,6 +97,6 @@ class GoalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def goal_params
-      params.require(:goal).permit(:name, :sport, :goalType, :goalStartDate, :goalEndDate, :training, :recurring, :goalInterval, :goalNumber, :trainingType, :description, :accountabilityPartners, :percentComplete, :active, :complete, :user_id, :journal_entry_ids => [])
+      params.require(:goal).permit(:name, :sport, :goalType, :goalStartDate, :goalEndDate, :training, :recurring, :goalInterval, :goalNumber, :trainingType, :description, :accountabilityPartners, :percentComplete, :trainingTimeInterval, :active, :complete, :user_id, :journal_entry_ids => [])
     end
 end

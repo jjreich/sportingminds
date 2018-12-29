@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181227184349) do
+ActiveRecord::Schema.define(version: 20181229164518) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20181227184349) do
     t.integer "user_id"
     t.string "ancestry"
     t.string "name"
+    t.integer "trainingTimeInterval"
     t.index ["ancestry"], name: "index_goals_on_ancestry"
     t.index ["user_id"], name: "index_goals_on_user_id"
   end
