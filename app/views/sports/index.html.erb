@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>icon</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,6 +15,7 @@
     <% @sports.each do |sport| %>
       <tr>
         <td><%= sport.name %></td>
+        <td><%= sport.icon %></td>
         <td><%= link_to 'Show', sport %></td>
         <td><%= link_to 'Edit', edit_sport_path(sport) %></td>
         <td><%= link_to 'Destroy', sport, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -3,7 +3,7 @@ class Goal < ApplicationRecord
 	belongs_to :user
 	has_and_belongs_to_many :journal_entries
 
-	before_save :adjust_completion_percentage, :is_complete?
+	before_save :adjust_completion_percentage, :is_complete?, :is_active?
 
 	private
 
@@ -42,6 +42,16 @@ class Goal < ApplicationRecord
     		self.complete = true
     	else 
     		self.complete = false
+    	end
+
+	end 
+
+	def is_active?
+
+		if (Date.today <= self.goalEndDate && Date.today >= self.goalStartDate)
+			self.active = true
+		else
+			self.active = false
     	end
 
 	end 

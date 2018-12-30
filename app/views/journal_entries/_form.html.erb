@@ -22,14 +22,70 @@
       <%= f.input :goal_ids, collection: @goals, as: :check_boxes, input_html: { multiple: true } %>
     <% end %>
     <%= f.input :dateTimeOfTraining %>
-    <%= f.input :duration %>
+    <%= f.input :duration, required: true %>
     <%= f.input :organizedPractice %>
-    <%= f.input :trainingAccomplished %>
-    <%= f.input :motivationLevel %>
-    <%= f.input :performanceLevel %>
+    <%= f.input :trainingAccomplished, required: true %>
+    <%= f.input :motivationLevel, required: true %>
+    <%= f.input :performanceLevel, required: true %>
   </div>
 
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
 <% end %>
+
+<!--
+
+<script>
+  function validateForm() {
+      var valid = true;
+      $('.required').each(function () {
+          if ($(this).val() === '') {
+              valid = false;
+              return false;
+          }
+      });
+    return valid
+  }
+
+  $("#new_journal_entry").submit(function(){
+    var isFormValid = true;
+
+    $(".required").each(function(){
+        if($(".required").val() == '') {
+            $(this).addClass("highlight");
+            isFormValid = false;
+        }
+        else{
+            $(this).removeClass("highlight");
+        }
+    });
+
+    if (!isFormValid) alert("Please fill in all the required fields (indicated by *)");
+
+    return isFormValid;
+  });
+</script>
+
+-->
+
+<script>
+
+  $('#new_journal_entry').submit(function() {
+    var errors = 0;
+    $(".required").each.(function(){
+         if( $(this).val().length == 0 ) {
+              $(this).addClass('highlight');
+              errors++;
+        } else {
+              $(this).removeClass('highlight');
+        }   
+    });
+    if(errors > 0){
+        alert("Please fill in all the required fields (indicated by *)");
+        return false;
+    }
+    // do the ajax..    
+  });
+
+</script>

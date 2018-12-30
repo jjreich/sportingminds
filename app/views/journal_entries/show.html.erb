@@ -7,7 +7,7 @@
 
 <p>
   <strong>Sport:</strong>
-  <%= Sport.find(@journal_entry.sport).name %>
+  <%= Sport.find(@journal_entry.sport).name if @journal_entry.sport.present? %>
 </p>
 
 <p>

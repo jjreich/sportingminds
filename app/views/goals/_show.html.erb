@@ -84,20 +84,38 @@
 
 <div class="grid-x grid-padding-x">
   <div class="cell large-8 large-offset-2 medium-10 medium-offset-1 small-12">
-    <h2><%= @goal.name %> <%= image_tag("soccerBall.png", width: "36", :alt => "soccer") %></h2> 
 
-      <b>
-        <%= @goal.goalStartDate.strftime ("%m/%d/%y") %> - <%= @goal.goalEndDate.strftime ("%m/%d/%y") %>
-      </b>
+    <% sportIcon = "" %>
+    <% sportIcon = Sport.find(@goal.sport).icon if Sport.find(@goal.sport).icon.present? %>
+
+    <h2><%= @goal.name %> <%= image_tag(sportIcon, width: "36") %></h2> 
 
       <p>
-        <strong>Description:</strong>
-        <%= @goal.description %>
+        <b><%= @goal.goalStartDate.strftime ("%m/%d/%y") %> - <%= @goal.goalEndDate.strftime ("%m/%d/%y") %></b>
       </p>
+
+      <% if @goal.goalInterval == "Daily" %>
+        <% timePeriod = "day" %>
+      <% elsif @goal.goalInterval == "Weekly" %>
+        <% timePeriod = "week" %> 
+      <% elsif @goal.goalInterval == "Monthly" %>
+        <% timePeriod = "month" %>
+      <% elsif @goal.goalInterval == "Annually" %>
+        <% timePeriod = "year" %>
+      <% end %>
+
+      <p><%= @goal.name %> - <%= @goal.trainingTimeInterval %> minutes, <%= @goal.goalNumber %> times each <%= timePeriod %>.</p>
+
+      <% if @goal.description.present? %>
+        <p>
+          <strong>Description:</strong>
+          <%= @goal.description %>
+        </p>
+      <% end %>
 
       <h4>Training in support of this goal</h4>
 
-      <% @goal.journal_entries.each do |journal_entry| %>
+      <% @goal.journal_entries.order(:dateTimeOfTraining).reverse.each do |journal_entry| %>
         <%= link_to journal_entry do %>
 
           <% journalClass = "" %>
