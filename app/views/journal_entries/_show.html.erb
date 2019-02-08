@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<div class="grid-x grid-padding-x">
+  <div class="cell large-8 large-offset-2 medium-10 medium-offset-1 small-12">
+
+    <% sportIcon = "" %>
+    <% sportIcon = Sport.find(@journal_entry.sport).icon if Sport.find(@journal_entry.sport).icon.present? %>
+    <% endTimeOfTraining = @journal_entry.dateTimeOfTraining + (@journal_entry.duration*60) %>
+
+    <h2><%= @journal_entry.trainingAccomplished %> <%= image_tag(sportIcon, width: "36") %></h2> 
+
+
+    <p>
+      <b>Date:</b>
+      <%= @journal_entry.dateTimeOfTraining.strftime ("%m/%d/%y") %>
+    </p>
+
+    <p>
+      <b>Time:</b>
+      <%= @journal_entry.dateTimeOfTraining.strftime ("%l:%M%P") %> - <%= endTimeOfTraining.strftime ("%l:%M%P") %>
+    </p>
+
+    <p>
+      <% if @journal_entry.organizedPractice %>
+        Organized Team Practice
+      <% else %>
+        Individual Training
+      <% end %>
+    </p>
+
+    <p>
+      <strong>Motivationlevel:</strong>
+      <%= @journal_entry.motivationLevel %>
+    </p>
+
+    <p>
+      <strong>Performancelevel:</strong>
+      <%= @journal_entry.performanceLevel %>
+    </p>
+
+    <b>Associated Goals:</b>
+
+    <% @journal_entry.goals.where(:active => true).each do |goal| %>
+      <%= link_to goal do %>
+        <%= goal.name %></br>
+      <% end %>
+    <% end %>
+
+    </br>
+
+    <%= link_to link_to 'Return to Training', journal_entries_path, :class => "", remote: true %>
+
+  </div>
+</div>

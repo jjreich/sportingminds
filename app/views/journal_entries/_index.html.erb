@@ -49,11 +49,11 @@
         <div class="cell large-12">
           <p class="text-left"><b><%= journal_entry.dateTimeOfTraining.strftime ("%m/%d/%y %l:%M%P") %> (<%= journal_entry.duration %> minutes)</b> - <%= journal_entry.trainingAccomplished %> &nbsp
 
-            <%= link_to journal_entry do %> 
+            <%= link_to journal_entry, :class => "", remote: true do %> 
               <%= image_tag("view24.png", width: "12", :alt => "view") %>
             <% end %> &nbsp
 
-            <%= link_to edit_journal_entry_path(journal_entry) do %> 
+            <%= link_to edit_journal_entry_path(journal_entry), :class => "", remote: true do %> 
               <%= image_tag("edit24.png", width: "16", :alt => "edit") %>
             <% end %> &nbsp
 
@@ -65,7 +65,7 @@
       </div>
     <% end %>
 
-    <%= link_to 'New Training Session', new_journal_entry_path %>
+    <%= link_to 'New Training Session', new_journal_entry_path, :class => "", remote: true %>
   </div>
 </div>
 
