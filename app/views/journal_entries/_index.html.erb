@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <!--
 
@@ -42,6 +42,7 @@
 
 <div class="grid-x">
   <div class="cell large-8 large-offset-2 medium-10 medium-offset-1 small-12">
+    <p id="notice"><%= notice %></p>
     <h2>Training Log</h2>
     <% @journal_entries.each do |journal_entry| %>
 
@@ -58,7 +59,7 @@
             <% end %> &nbsp
 
             <%= link_to journal_entry, method: :delete, data: { confirm: 'Are you sure?' }, :class => "", remote: true do %> 
-              <%= image_tag("trashRecycleBin.png", width: "16", :alt => "edit") %>
+              <%= image_tag("trashRecycleBin.png", width: "16", :alt => "trash") %>
             <% end %>
           </p>
         </div>        

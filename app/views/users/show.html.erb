@@ -3,7 +3,7 @@
 
 		<%= @user.email %>
 
-        <%= link_to edit_user_registration_path(@user), :class => "", remote: true do %> 
+        <%= link_to edit_user_path(@user), :class => "", remote: true do %> 
             <%= image_tag("edit24.png", width: "16", :alt => "edit") %>
         <% end %>
 		

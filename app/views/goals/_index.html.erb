@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <!--
 
@@ -58,6 +58,7 @@
 
 <div class="grid-x grid-padding-x">
 	<div class="cell large-8 large-offset-2 medium-10 medium-offset-1 small-12">
+    <p id="notice"><%= notice %></p>
 		<h2>Goals</h2>
 		<% @goals.each do |goal| %>
 			<% goalTimeInterval = (goal.goalEndDate - goal.goalStartDate).to_f %>
@@ -99,6 +100,5 @@
 
 <br>
 
-<%= link_to "current_user_show", current_user %>
 
 
