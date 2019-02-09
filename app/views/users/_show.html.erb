@@ -1,11 +1,13 @@
 <div class="grid-x grid-padding-x">
 	<div class="cell large-8 large-offset-2 medium-10 medium-offset-1 small-12">
 
-		<%= @user.email %>
+		<h2><%= @user.first_name %> <%= @user.last_name %>          
+			<%= link_to edit_user_registration_path(@user), :class => "", remote: true do %> 
+              <%= image_tag("edit24.png", width: "16", :alt => "edit") %>
+            <% end %>
+        </h2>
 
-        <%= link_to edit_user_registration_path(@user), :class => "", remote: true do %> 
-            <%= image_tag("edit24.png", width: "16", :alt => "edit") %>
-        <% end %>
+		Email: <%= @user.email %>
 		
 	</div>
 </div>
