@@ -35,6 +35,7 @@ gem 'devise'
 gem 'rolify'
 gem 'cancancan', '~> 2.0'
 gem 'ancestry'
+gem 'sendgrid-ruby'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
