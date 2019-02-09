@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :goals
   devise_for :users
+  resources :users, :only => [:show]
   resources :journal_entries
   resources :sports
   resources :training_types

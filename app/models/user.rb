@@ -11,6 +11,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
+  def fullName
+    first_lame + " " + last_Lame
+  end
+
   def before_add_method(role)
 
   end
