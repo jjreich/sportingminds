@@ -13,7 +13,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   def fullName
-    first_lame + " " + last_Lame
+    first_name + " " + last_name
   end
 
   def before_add_method(role)

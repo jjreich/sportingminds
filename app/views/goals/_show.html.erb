@@ -139,7 +139,19 @@
 
       <%= link_to "Add training for this goal", new_journal_entry_path(:goal_id => @goal.id) %>
 
+      </br>
+
+      <h4>Comments</h4>
+
+      <% @goal.comments.order(:created_at).reverse.each do |comment| %>
+        <p><%= comment.created_at.strftime ("%m/%d/%y %l:%M%P") %> - <%= comment.body %> (<%= User.find(comment.user_id).fullName %>)</p>
+      <% end %>
+
       <%= link_to "Add comments to this goal", new_comment_path(:goal_id => @goal.id) %>
+
+      </br>
+
+      </br>
 
       </br>
 

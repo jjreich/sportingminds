@@ -50,6 +50,14 @@
 
     <%= link_to link_to 'Return to Training', journal_entries_path, :class => "", remote: true %>
 
+    </br>
+
+    <h4>Comments</h4>
+
+    <% @journal_entry.comments.order(:created_at).reverse.each do |comment| %>
+        <p><%= comment.created_at.strftime ("%m/%d/%y %l:%M%P") %> - <%= comment.body %> (<%= User.find(comment.user_id).fullName %>)</p>
+    <% end %>
+
     <%= link_to "Add comments to this goal", new_comment_path(:journal_entry_id => @journal_entry.id) %>
 
 
