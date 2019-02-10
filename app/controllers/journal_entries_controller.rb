@@ -49,7 +49,11 @@ class JournalEntriesController < ApplicationController
   # POST /journal_entries
   # POST /journal_entries.json
   def create
-    @journal_entry = JournalEntry.new(journal_entry_params)
+    if (current_user.has_role? :admin) 
+      @journal_entries = JournalEntry.all.order(:dateTimeOfTraining).reverse
+    elsif (current_user.has_role? :athlete)
+      @journal_entries = JournalEntry.where(:user_id => current_user.id).order(:dateTimeOfTraining).reverse
+    end
 
     respond_to do |format|
       if @journal_entry.save
@@ -65,6 +69,12 @@ class JournalEntriesController < ApplicationController
   # PATCH/PUT /journal_entries/1
   # PATCH/PUT /journal_entries/1.json
   def update
+    if (current_user.has_role? :admin) 
+      @journal_entries = JournalEntry.all.order(:dateTimeOfTraining).reverse
+    elsif (current_user.has_role? :athlete)
+      @journal_entries = JournalEntry.where(:user_id => current_user.id).order(:dateTimeOfTraining).reverse
+    end
+
     respond_to do |format|
       if @journal_entry.update(journal_entry_params)
         format.html { redirect_to @journal_entry, notice: 'Journal entry was successfully updated.' }
@@ -80,6 +90,13 @@ class JournalEntriesController < ApplicationController
   # DELETE /journal_entries/1.json
   def destroy
     @journal_entry.destroy
+
+    if (current_user.has_role? :admin) 
+      @journal_entries = JournalEntry.all.order(:dateTimeOfTraining).reverse
+    elsif (current_user.has_role? :athlete)
+      @journal_entries = JournalEntry.where(:user_id => current_user.id).order(:dateTimeOfTraining).reverse
+    end
+        
     respond_to do |format|
       format.html { redirect_to journal_entries_url, notice: 'Journal entry was successfully destroyed.' }
       format.json { head :no_content }

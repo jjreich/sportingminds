@@ -12,7 +12,6 @@
 	      <li><%= link_to "User Account", current_user, :class => "", remote: true %></li>
 	      <li><a href="#">Help</a></li>
 	      <% if user_signed_in? %>
-	        <li><a><%= current_user.email %></a></li>
 	        <li><%= link_to "Sign out", destroy_user_session_path,:method => 'delete' %></li>
 	      <% else %>
 	        <li><%= link_to "Login", new_user_session_path %></li>

@@ -36,7 +36,7 @@ class GoalsController < ApplicationController
     if (current_user.has_role? :admin) 
       @goals = Goal.all
     elsif (current_user.has_role? :athlete)
-      @goals = Goal.where("user_id = ?", current_user.id)
+      @goals = Goal.where(:user_id => current_user.id, :active => true).order(:goalEndDate)
     end
 
     respond_to do |format|
@@ -56,7 +56,7 @@ class GoalsController < ApplicationController
     if (current_user.has_role? :admin) 
       @goals = Goal.all
     elsif (current_user.has_role? :athlete)
-      @goals = Goal.where("user_id = ?", current_user.id)
+      @goals = Goal.where(:user_id => current_user.id, :active => true).order(:goalEndDate)
     end
 
     respond_to do |format|
@@ -79,7 +79,7 @@ class GoalsController < ApplicationController
     if (current_user.has_role? :admin) 
       @goals = Goal.all
     elsif (current_user.has_role? :athlete)
-      @goals = Goal.where("user_id = ?", current_user.id)
+      @goals = Goal.where(:user_id => current_user.id, :active => true).order(:goalEndDate)
     end
 
     respond_to do |format|
