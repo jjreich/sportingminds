@@ -5,6 +5,7 @@ class User < ApplicationRecord
 
   has_many :journal_entries
   has_many :goals
+  has_many :comments
 
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable
