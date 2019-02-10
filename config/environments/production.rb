@@ -77,7 +77,7 @@ Rails.application.configure do
     :enable_starttls_auto => true 
   }
 
-  config.action_mailer.default_url_options = { :host => 'peaceful-tundra-56890.herokuapp.com' } 
+  config.action_mailer.default_url_options = { :host => 'sportingminds.pro' } 
 
 
   # Ignore bad email addresses and do not raise email delivery errors.
