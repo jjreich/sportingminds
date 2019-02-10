@@ -4,7 +4,11 @@ class JournalEntriesController < ApplicationController
   # GET /journal_entries
   # GET /journal_entries.json
   def index
-    @journal_entries = JournalEntry.all.order(:dateTimeOfTraining).reverse
+    if (current_user.has_role? :admin) 
+      @journal_entries = JournalEntry.all.order(:dateTimeOfTraining).reverse
+    elsif (current_user.has_role? :athlete)
+      @journal_entries = JournalEntry.where(:user_id => current_user.id).order(:dateTimeOfTraining).reverse
+    end
   end
 
   # GET /journal_entries/1
