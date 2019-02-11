@@ -49,6 +49,8 @@ class JournalEntriesController < ApplicationController
   # POST /journal_entries
   # POST /journal_entries.json
   def create
+    @journal_entry = JournalEntry.new(journal_entry_params)
+
     if (current_user.has_role? :admin) 
       @journal_entries = JournalEntry.all.order(:dateTimeOfTraining).reverse
     elsif (current_user.has_role? :athlete)
@@ -96,7 +98,7 @@ class JournalEntriesController < ApplicationController
     elsif (current_user.has_role? :athlete)
       @journal_entries = JournalEntry.where(:user_id => current_user.id).order(:dateTimeOfTraining).reverse
     end
-        
+
     respond_to do |format|
       format.html { redirect_to journal_entries_url, notice: 'Journal entry was successfully destroyed.' }
       format.json { head :no_content }
