@@ -1,9 +1,15 @@
-<% if @goal.present? %>
-	<h1>New <%= @goal.name %> entry</h1>
-<% else %>
-	<h1>New Journal Entry</h1>
-<% end %>
+<div class="grid-x">
+	<div class="cell large-8 large-offset-2 medium-10 medium-offset-1 small-12">
+		<% if @goal.present? %>
+			<h1>New <%= @goal.name %> entry</h1>
+		<% else %>
+			<h1>New Journal Entry</h1>
+		<% end %>
 
-<%= render 'form', journal_entry: @journal_entry %>
+		<%= render 'form', journal_entry: @journal_entry %>
 
-<%= link_to 'Back', journal_entries_path %>
+		<%= link_to 'Return to Journal', journal_entries_path, :class => "", remote: true  %>
+	</div>
+</div>
+
+<br>

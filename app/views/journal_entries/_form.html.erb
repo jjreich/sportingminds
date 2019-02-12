@@ -3,8 +3,6 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <%= @goal %>
-
   <div class="form-inputs">
     <%= f.hidden_field :user_id %>
     <% if @goal.present? %>
@@ -25,67 +23,37 @@
     <%= f.input :duration, required: true %>
     <%= f.input :organizedPractice %>
     <%= f.input :trainingAccomplished, required: true %>
-    <%= f.input :motivationLevel, required: true %>
-    <%= f.input :performanceLevel, required: true %>
+
+    <div class="slider" data-slider data-initial-start="5" data-end="10">
+      <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls="journal_entrymotivationLevel"></span>
+      <span class="slider-fill" data-slider-fill></span>
+      <%= f.input :motivationLevel, required: true, input_html: { min: '0', max: '10' } %>
+    </div>
+
+    <div class="slider" data-slider data-initial-start="5" data-end="10">
+      <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls="journal_entryperformanceLevel"></span>
+      <span class="slider-fill" data-slider-fill></span>
+      <%= f.input :performanceLevel, required: true, input_html: { min: '0', max: '10' } %>
+    </div>
   </div>
+
+  </br>
+  </br>
 
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
-<% end %>
 
-<!--
+  <script>
+    $(document).foundation();
 
-<script>
-  function validateForm() {
-      var valid = true;
-      $('.required').each(function () {
-          if ($(this).val() === '') {
-              valid = false;
-              return false;
-          }
-      });
-    return valid
-  }
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value;
 
-  $("#new_journal_entry").submit(function(){
-    var isFormValid = true;
-
-    $(".required").each(function(){
-        if($(".required").val() == '') {
-            $(this).addClass("highlight");
-            isFormValid = false;
-        }
-        else{
-            $(this).removeClass("highlight");
-        }
-    });
-
-    if (!isFormValid) alert("Please fill in all the required fields (indicated by *)");
-
-    return isFormValid;
-  });
-</script>
-
--->
-
-<script>
-
-  $('#new_journal_entry').submit(function() {
-    var errors = 0;
-    $(".required").each.(function(){
-         if( $(this).val().length == 0 ) {
-              $(this).addClass('highlight');
-              errors++;
-        } else {
-              $(this).removeClass('highlight');
-        }   
-    });
-    if(errors > 0){
-        alert("Please fill in all the required fields (indicated by *)");
-        return false;
+    slider.oninput = function() {
+      output.innerHTML = this.value;
     }
-    // do the ajax..    
-  });
 
-</script>
+  </script>
+<% end %>
