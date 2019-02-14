@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
       @comment = Comment.new(:user_id => current_user.id, :goal_id => @goal.id, :parent_id => params[:parent_id])
     elsif params[:journal_entry_id].present?
       @journal_entry = JournalEntry.find(params[:journal_entry_id])
-      @comment = Comment.new(:user_id => current_user.id, :journal_entry_id => @journal_entry.id)
+      @comment = Comment.new(:user_id => current_user.id, :journal_entry_id => @journal_entry.id, :parent_id => params[:parent_id])
     else
       @comment = Comment.new(:user_id => current_user.id)
     end
