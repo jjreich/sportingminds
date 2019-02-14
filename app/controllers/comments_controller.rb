@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
   def new
     if params[:goal_id].present?
       @goal = Goal.find(params[:goal_id])
-      @comment = Comment.new(:user_id => current_user.id, :goal_id => @goal.id)
+      @comment = Comment.new(:user_id => current_user.id, :goal_id => @goal.id, :parent_id => params[:parent_id])
     elsif params[:journal_entry_id].present?
       @journal_entry = JournalEntry.find(params[:journal_entry_id])
       @comment = Comment.new(:user_id => current_user.id, :journal_entry_id => @journal_entry.id)
@@ -77,6 +77,6 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:body, :goal_id, :user_id, :journal_entry_id)
+      params.require(:comment).permit(:body, :goal_id, :user_id, :journal_entry_id, :parent_id)
     end
 end

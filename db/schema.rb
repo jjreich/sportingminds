@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190210001938) do
+ActiveRecord::Schema.define(version: 20190212174923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20190210001938) do
     t.integer "user_id"
     t.integer "goal_id"
     t.integer "journal_entry_id"
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_comments_on_ancestry"
     t.index ["goal_id"], name: "index_comments_on_goal_id"
     t.index ["journal_entry_id"], name: "index_comments_on_journal_entry_id"
     t.index ["user_id"], name: "index_comments_on_user_id"

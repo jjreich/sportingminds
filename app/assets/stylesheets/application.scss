@@ -272,6 +272,14 @@
   text-decoration: none;
 }
 
+.nested_comments {
+  margin-left: 30px;
+}
+
+.nested_comments .nested_comments .nested_comments .nested_comments {
+  margin-left: 0;
+}
+
  .top-bar li {
     a {
         &:hover {
