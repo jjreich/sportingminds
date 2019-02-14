@@ -64,7 +64,6 @@
 
       <% comments.order(:created_at).reverse.each do |comment| %>
         <%= render 'comment', comment: comment %>
-
       <% end %>
 
       <%= link_to "Add comment to this goal", new_comment_path(:goal_id => @goal.id) %>
