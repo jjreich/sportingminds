@@ -1,0 +1,10 @@
+<div id="users">
+
+
+    <% @users.each do |user| %>
+    	<p>
+    		<%= user.first_name %> <%= user.last_name %> (<%= user.email %>) <%= link_to "Add accountability partner", accountability_partnerships_path(:accountability_partner_id => user.id), :method => :post %>
+    	</p>
+    <% end %>
+
+</div>

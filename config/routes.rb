@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  resources :accountability_partnerships
   resources :comments
   resources :goals
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
-  resources :users, :only => [:show, :edit]
+  resources :users, :only => [:show, :edit, :index]
   resources :journal_entries
   resources :sports
   resources :training_types

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Accountability Partnerships</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Accountability partner</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @accountability_partnerships.each do |accountability_partnership| %>
+      <tr>
+        <td><%= accountability_partnership.user_id %></td>
+        <td><%= accountability_partnership.accountability_partner_id %></td>
+        <td><%= link_to 'Show', accountability_partnership %></td>
+        <td><%= link_to 'Edit', edit_accountability_partnership_path(accountability_partnership) %></td>
+        <td><%= link_to 'Destroy', accountability_partnership, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Accountability Partnership', new_accountability_partnership_path %>

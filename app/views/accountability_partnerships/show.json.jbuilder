@@ -1,0 +1,1 @@
+json.partial! "accountability_partnerships/accountability_partnership", accountability_partnership: @accountability_partnership

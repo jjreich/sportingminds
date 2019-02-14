@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @accountability_partnership.user_id %>
+</p>
+
+<p>
+  <strong>Accountability partner:</strong>
+  <%= @accountability_partnership.accountability_partner_id %>
+</p>
+
+<%= link_to 'Edit', edit_accountability_partnership_path(@accountability_partnership) %> |
+<%= link_to 'Back', accountability_partnerships_path %>

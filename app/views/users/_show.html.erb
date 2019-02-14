@@ -11,3 +11,28 @@
 		
 	</div>
 </div>
+
+<h2>Accountability Partners</h2>
+
+<% if @user.accountability_partnerships.present? %>
+	<ul>
+	  <% @user.accountability_partnerships.each do |accountability_partnership| %>
+	    <li>
+	      <%= accountability_partnership.accountability_partner.first_name %> <%= accountability_partnership.accountability_partner.last_name %>
+	      (<%= link_to "remove", accountability_partnership, :method => :delete %>)
+	    </li>
+	  <% end %>
+	</ul>
+<% end %>
+
+<p><%= link_to "Find Accountability Partners", users_path %></p>
+
+<h2>Others who have chosen you as an Accountability Partner</h2>
+
+<% if @user.inverse_accountability_partners.present? %>
+	<ul>
+	  <% @user.inverse_accountability_partners.each do |user| %>
+	    <li><%= user.first_name %> <%= user.last_name %></li>
+	  <% end %>
+	</ul>
+<% end %>
