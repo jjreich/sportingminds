@@ -1,38 +1,55 @@
-<div class="grid-x grid-padding-x">
-	<div class="cell large-8 large-offset-2 medium-10 medium-offset-1 small-12">
+<div class="grid-container full">
+	<div class="grid-x grid-padding-x">
+		<div class="cell large-8 large-offset-2 medium-10 medium-offset-1 small-12">
 
-		<h2><%= @user.first_name %> <%= @user.last_name %>          
-			<%= link_to edit_user_registration_path(@user), :class => "", remote: true do %> 
-              <%= image_tag("edit24.png", width: "16", :alt => "edit") %>
-            <% end %>
-        </h2>
+			<h2><%= @user.first_name %> <%= @user.last_name %>          
+				<%= link_to edit_user_registration_path(@user), :class => "", remote: true do %> 
+	              <%= image_tag("edit24.png", width: "16", :alt => "edit") %>
+	            <% end %>
+	        </h2>
 
-		Email: <%= @user.email %>
-		
+			Email: <%= @user.email %>
+			
+		</div>
+	</div>
+
+	<div class="grid-x grid-padding-x">
+		<div class="cell large-8 large-offset-2 medium-10 medium-offset-1 small-12">
+			<hr>
+		</div>
+	</div>
+
+	<div class="grid-x grid-padding-x">
+		<div class="cell large-8 large-offset-2 medium-10 medium-offset-1 small-12">
+
+			<h3>Accountability Partners</h3>
+
+			<% if @user.accountability_partnerships.present? %>
+				  <% @user.accountability_partnerships.each do |accountability_partnership| %>
+				    <p>
+				      <%= accountability_partnership.accountability_partner.first_name %> <%= accountability_partnership.accountability_partner.last_name %>
+				      (<%= link_to "remove", accountability_partnership, :method => :delete %>)
+				    </p>
+				  <% end %>
+			<% end %>
+
+			<p><%= link_to "Find Accountability Partners", users_path %></p>
+		</div>
+	</div>
+
+	<div class="grid-x grid-padding-x">
+		<div class="cell large-8 large-offset-2 medium-10 medium-offset-1 small-12">	
+
+			<h3>Athletes who have chosen me as an Accountability Partner</h3>
+
+			<% if @user.inverse_accountability_partners.present? %>
+
+				<% @user.inverse_accountability_partners.each do |user| %>
+				    <p><%= user.first_name %> <%= user.last_name %></p>
+				<% end %>
+
+			<% end %>
+
+		</div>
 	</div>
 </div>
-
-<h2>Accountability Partners</h2>
-
-<% if @user.accountability_partnerships.present? %>
-	<ul>
-	  <% @user.accountability_partnerships.each do |accountability_partnership| %>
-	    <li>
-	      <%= accountability_partnership.accountability_partner.first_name %> <%= accountability_partnership.accountability_partner.last_name %>
-	      (<%= link_to "remove", accountability_partnership, :method => :delete %>)
-	    </li>
-	  <% end %>
-	</ul>
-<% end %>
-
-<p><%= link_to "Find Accountability Partners", users_path %></p>
-
-<h2>Others who have chosen you as an Accountability Partner</h2>
-
-<% if @user.inverse_accountability_partners.present? %>
-	<ul>
-	  <% @user.inverse_accountability_partners.each do |user| %>
-	    <li><%= user.first_name %> <%= user.last_name %></li>
-	  <% end %>
-	</ul>
-<% end %>
