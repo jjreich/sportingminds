@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Supported Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Supported Users</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @supported_users.each do |supported_user| %>
+      <tr>
+        <td><%= supported_user.fullName %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

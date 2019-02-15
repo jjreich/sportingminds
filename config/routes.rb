@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :accountability_partnerships
   resources :comments
+  resources :supported_users
   resources :goals
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
   resources :users, :only => [:show, :edit, :index]
