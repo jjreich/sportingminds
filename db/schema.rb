@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190214212517) do
+ActiveRecord::Schema.define(version: 20190215023247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,7 +53,6 @@ ActiveRecord::Schema.define(version: 20190214212517) do
     t.integer "goalNumber"
     t.string "trainingType"
     t.string "description"
-    t.string "accountabilityPartners", default: [], array: true
     t.float "percentComplete"
     t.boolean "active"
     t.boolean "complete"

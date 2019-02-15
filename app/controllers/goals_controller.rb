@@ -22,6 +22,8 @@ class GoalsController < ApplicationController
     @sports = Sport.all
     @trainingTypes = TrainingType.all
     @goalTypes = GoalType.all
+    @accountability_partnerships = AccountabilityPartnership.where(:user_id => current_user.id)
+    @accountability_partners = User.where(:id => current_user.accountability_partners.ids)
   end
 
   # GET /goals/1/edit
@@ -97,6 +99,6 @@ class GoalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def goal_params
-      params.require(:goal).permit(:name, :sport, :goalType, :goalStartDate, :goalEndDate, :training, :recurring, :goalInterval, :goalNumber, :trainingType, :description, :accountabilityPartners, :percentComplete, :trainingTimeInterval, :active, :complete, :user_id, :journal_entry_ids => [])
+      params.require(:goal).permit(:name, :sport, :goalType, :goalStartDate, :goalEndDate, :training, :recurring, :goalInterval, :goalNumber, :trainingType, :description, :percentComplete, :trainingTimeInterval, :active, :complete, :user_id, :journal_entry_ids => [])
     end
 end
