@@ -48,10 +48,6 @@
 
     </br>
 
-    <%= link_to link_to 'Return to Training', journal_entries_path, :class => "", remote: true %>
-
-    </br>
-
     <h4>Comments</h4>
 
     <% comments = Comment.roots.where(:journal_entry_id => @journal_entry.id) %>

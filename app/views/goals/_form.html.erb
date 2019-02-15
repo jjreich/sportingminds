@@ -6,8 +6,9 @@
   <div class="form-inputs">
     <%= f.hidden_field :user_id %>
     <%= f.input :name %>
-    <%= f.input :sport, label: "Sport", collection: @sports, label_method: :name, prompt: "Is there a sport you would like to associate to this goal?" %>
     <%= f.input :goalType, label: "Goal Type", collection: @goalTypes, label_method: :name, prompt: "What type of goal is this?" %>
+    <%= f.input :sport, label: "Sport", collection: @sports, label_method: :name, prompt: "Is there a sport you would like to associate to this goal?" %>
+    
 
     <div class="show" id="goalStartDate">
       <%= f.input :goalStartDate %>

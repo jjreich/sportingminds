@@ -33,7 +33,7 @@
       <h4>Training in support of this goal</h4>
 
       <% @goal.journal_entries.order(:dateTimeOfTraining).reverse.each do |journal_entry| %>
-        <%= link_to journal_entry do %>
+        
 
           <% journalClass = "" %>
           <% if journal_entry.duration < @goal.trainingTimeInterval %>
@@ -46,16 +46,26 @@
             <% journalClass = "myRedButton" %>
           <% end %>
 
-          <p>&nbsp &nbsp<span class="<%= journalClass %>"></span> <%= journal_entry.dateTimeOfTraining.strftime ("%m/%d/%y %l:%M%P") %> - <%= journal_entry.trainingAccomplished %> for <%= journal_entry.duration %> minutes.</p>
+          <% commentCount = Comment.where(:journal_entry_id => journal_entry.id).count %>
 
-        <% end %>
+          <p>&nbsp &nbsp<span class="<%= journalClass %>"></span> <%= journal_entry.dateTimeOfTraining.strftime ("%m/%d/%y %l:%M%P") %> - <%= journal_entry.trainingAccomplished %> for <%= journal_entry.duration %> minutes &nbsp
+            <% if commentCount > 0 %>
+              <%= image_tag("comments.png", width: "28") %><span style="position:relative;left:-18px;top:-2px;"><%= commentCount %></span>
+              <%= link_to journal_entry, :class => "", remote: true do %> 
+                <%= image_tag("view24.png", width: "12", :alt => "view") %>
+              <% end %>
+            <% end %>
+            
+          </p>
+
+        
       <% end %>
 
       <%= link_to "Add training for this goal", new_journal_entry_path(:goal_id => @goal.id), :class => "", remote: true  %>
 
-      </br>
+      </br></br>
 
-      <h4>Comments</h4>
+      <h4>Comments <%= image_tag("comments.png", width: "30") %></h4>
 
       <% comments = Comment.roots.where(:goal_id => @goal.id) %>
 
@@ -63,7 +73,7 @@
         <%= render 'comment', comment: comment %>
       <% end %>
 
-      <%= link_to "Add comment to this goal", new_comment_path(:goal_id => @goal.id) %>
+      <%= link_to "Add new comment", new_comment_path(:goal_id => @goal.id) %>
 
       </br>
 
