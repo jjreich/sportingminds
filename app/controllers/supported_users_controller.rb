@@ -1,5 +1,5 @@
 class SupportedUsersController < ApplicationController
-  before_action :set_supported_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_supported_user, only: [:show]
 
   # GET /supported_users
   # GET /supported_users.json
@@ -10,6 +10,8 @@ class SupportedUsersController < ApplicationController
   # GET /supported_users/1
   # GET /supported_users/1.json
   def show
+    @active_goals = @supported_user.goals.where(:active => true)
+    @recent_journal_entries = @supported_user.journal_entries
   end
 
   # GET /supported_users/new
@@ -64,7 +66,7 @@ class SupportedUsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_supported_user
-      @supported_user = SupportedUser.find(params[:id])
+      @supported_user = User.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

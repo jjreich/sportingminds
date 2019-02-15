@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<div class="grid-container full">
+	<div class="grid-x grid-padding-x">
+		<div class="cell large-8 large-offset-2 medium-10 medium-offset-1 small-12">
+
+			<h2>
+				<%= @supported_user.first_name %> <%= @supported_user.last_name %>          
+	        </h2>
+
+			<p>
+				<b>Email:</b> <%= @supported_user.email %>
+			</p>
+		</div>
+	</div>
+
+	<div class="grid-x grid-padding-x">
+		<div class="cell large-8 large-offset-2 medium-10 medium-offset-1 small-12">
+
+			<h3>
+				Active Goals          
+	        </h3>
+
+	        <% if @active_goals.present? %>
+
+		        <% @active_goals.each do |active_goal| %>
+		        	<% goalTimeInterval = (active_goal.goalEndDate - active_goal.goalStartDate).to_f %>
+					<% daysSinceGoalStartDate = (Date.today - active_goal.goalStartDate).to_f %>
+					<% timePercentagePassedForGoal = daysSinceGoalStartDate/goalTimeInterval %>
+					<% if active_goal.percentComplete >= 1.0 or active_goal.complete == true %>
+			        	<% className = "myBlueButton" %>
+						<% elsif (active_goal.percentComplete >= timePercentagePassedForGoal) %>
+							<% className = "myGreenButton" %>
+						<% elsif (active_goal.percentComplete >= timePercentagePassedForGoal-0.1) %>
+							<% className = "myYellowButton" %>
+						<% else %>
+							<% className = "myRedButton" %>
+					<% end %>
+
+					<div class="grid-x grid-padding-x">
+						<div class="cell large-12">
+							<p class="text-left">&nbsp &nbsp<span class="<%= className %>"> </span><b><%= active_goal.name %></b> - <%= active_goal.description %> <%= active_goal.goalStartDate.strftime ("%m/%d/%y") %> - <%= active_goal.goalEndDate.strftime ("%m/%d/%y") %> &nbsp
+
+								<%= link_to active_goal, :class => "", remote: true do %> 
+									<%= image_tag("view24.png", width: "12", :alt => "view") %>
+								<% end %> &nbsp
+							</p>
+						</div>				
+					</div>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
+
+	<div class="grid-x grid-padding-x">
+		<div class="cell large-8 large-offset-2 medium-10 medium-offset-1 small-12">
+
+			<h3>
+				Recent Training Journal          
+	        </h3>
+
+	        <% @recent_journal_entries.each do |journal_entry| %>
+		        <div class="cell large-12">
+		          <p class="text-left"><b><%= journal_entry.dateTimeOfTraining.strftime ("%m/%d/%y %l:%M%P") %> (<%= journal_entry.duration %> minutes)</b> - <%= journal_entry.trainingAccomplished %> &nbsp
+
+		            <%= link_to journal_entry, :class => "", remote: true do %> 
+		              <%= image_tag("view24.png", width: "12", :alt => "view") %>
+		            <% end %> &nbsp
+		          </p>
+		        </div>        
+		    <% end %>
+		</div>
+	</div>
+</div>

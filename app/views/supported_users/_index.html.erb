@@ -12,7 +12,9 @@
   <tbody>
     <% @supported_users.each do |supported_user| %>
       <tr>
-        <td><%= supported_user.fullName %></td>
+        <td><%= supported_user.fullName %><%= link_to supported_user_path(supported_user), :class => "", remote: true do %> 
+              <%= image_tag("view24.png", width: "12", :alt => "view") %>
+            <% end %> &nbsp</td>
       </tr>
     <% end %>
   </tbody>
