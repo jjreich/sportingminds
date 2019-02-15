@@ -10,7 +10,9 @@
 	      <li><%= link_to "Goals", goals_path, :class => "", remote: true %></li>
 	      <li><%= link_to "Training Log", journal_entries_path, :class => "", remote: true %></li>
 	      <li><%= link_to "User Account", current_user, :class => "", remote: true %></li>
-	      <li><a href="#">Help</a></li>
+	      <% if (user_signed_in? && current_user.inverse_accountability_partnerships.present?) %>
+	      	<li><a href="#">Supported Players</a></li>
+	      <% end %>
 	      <% if user_signed_in? %>
 	        <li><%= link_to "Sign out", destroy_user_session_path,:method => 'delete' %></li>
 	      <% else %>
@@ -34,6 +36,7 @@
 	<% end %>
 
 </div>
+
 
 
 
