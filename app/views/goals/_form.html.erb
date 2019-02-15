@@ -4,68 +4,127 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.hidden_field :user_id %>
-    <%= f.input :name %>
-    <%= f.input :goalType, label: "Goal Type", collection: @goalTypes, label_method: :name, prompt: "What type of goal is this?" %>
-    <%= f.input :sport, label: "Sport", collection: @sports, label_method: :name, prompt: "Is there a sport you would like to associate to this goal?" %>
-    
+    <div class="grid-x grid-margin-x">
 
-    <div class="show" id="goalStartDate">
-      <%= f.input :goalStartDate %>
+      <%= f.hidden_field :user_id %>
+      <div class="cell large-6 large-offset-0 medium-6 medium-offset-0 small-10 small-offset-1">
+        <%= f.input :name %>
+      </div>
+      <div class="cell large-6 large-offset-0 medium-6 medium-offset-0 small-10 small-offset-1">
+        <%= f.input :goalType, label: "Goal Type", collection: @goalTypes, label_method: :name, prompt: "What type of goal is this?" %>
+      </div>
     </div>
 
-    <div class="show">
-      <%= f.input :goalEndDate %>
-    </div>
-    
-    <div class="hide">
-      <%= f.input :training %>
-    </div>
-    
-    <div class="hide">
-      <%= f.input :recurring %>
+    <div class="grid-x grid-margin-x">
+      <div class="cell">
+        <%= f.input :sport, label: "Sport", collection: @sports, label_method: :name, prompt: "Is there a sport you would like to associate to this goal?" %>
+      </div>
+
+      <div class="hide cell">
+        <%= f.input :description %>
+      </div>
+
+      <div class="hide cell" id="goalStartDate">
+        <%= f.input :goalStartDate %>
+      </div>
+
+      <div class="hide cell" id="goalEndDate">
+        <%= f.input :goalEndDate %>
+      </div>
     </div>
 
-    
+    <div class="grid-x grid-margin-x">
+      <div class="hide cell large-3 large-offset-0 medium-3 medium-offset-0 small-6 small-offset-1" id="goalTraining">
+        <%= f.input :training, label: "Is this a training goal?" %>
+      </div>
 
-    <div class="show">
-      <%= f.input :goalInterval, label: "Interval", collection: ["Daily", "Weekly", "Monthly", "Annually"], prompt: "How often do you wish to accomplish this goal?" %>
+      <div class="hide cell large-3 large-offset-0 medium-3 medium-offset-0 small-6 small-offset-1" id="goalRecurring">
+        <%= f.input :recurring, label: "Is this goal reccuring?" %>
+      </div>
     </div>
 
-    <div class="show">
-      <%= f.input :goalNumber, label: "Number to Training Events", prompt: "How many times during the interval you selected do you wish to conduct your training?" %>
+    <div class="grid-x grid-margin-x">
+      <div class="hide cell large-6 large-offset-0 medium-6 medium-offset-0 small-10 small-offset-1" id="goalTrainingType">
+        <%= f.input :trainingType, label: "Training Type", collection: @trainingTypes, label_method: :name, prompt: "Select the type of training this will require to complete." %>
+      </div>
+
+      <div class="hide cell large-6 large-offset-0 medium-6 medium-offset-0 small-10 small-offset-1" id="goalGoalInterval">
+        <%= f.input :goalInterval, label: "Interval", collection: ["Daily", "Weekly", "Monthly", "Annually"], prompt: "How often do you wish to accomplish this goal?" %>
+      </div>
+
+      <div class="hide cell large-6 large-offset-0 medium-6 medium-offset-0 small-10 small-offset-1" id="goalGoalNumber">
+        <%= f.input :goalNumber, label: "Number to Training Events", prompt: "How many times during the interval you selected do you wish to conduct your training?" %>
+      </div>
+
+      <div class="hide cell large-6 large-offset-0 medium-6 medium-offset-0 small-10 small-offset-1" id="goalTrainingTimeInterval">
+        <%= f.input :trainingTimeInterval, label: "Minimum Length of Training Events (in minutes)", prompt: "What is the minimum training time each day for this goal?" %>
+      </div>
+
+      <div class="hide">
+        <%= f.input :percentComplete %>
+      </div>
+
+      <div class="hide">
+        <%= f.input :active %>
+      </div>
+
+      <div class="hide">
+        <%= f.input :complete %>
+      </div>
+
     </div>
 
-    <div class="show">
-      <%= f.input :trainingTimeInterval, label: "Length of Training Events", prompt: "What is the minimum training time each day for this goal?" %>
-    </div>
-
-    <div class="show">
-      <%= f.input :trainingType, label: "Training Type", collection: @trainingTypes, label_method: :name, prompt: "Select the type of training this will require to complete." %>
-    </div>
-
-    <div class="">
-      <%= f.input :description %>
-    </div>
-
-    <%= f.input :percentComplete %>
-    <%= f.input :active %>
-    <%= f.input :complete %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-actions" >
+    <%= f.submit class: 'button' %>
   </div>
 <% end %>
 
 <script>
   $( "#goal_goalType" ).change(function() {
     if ($( "#goal_goalType" ).val() == "1" ) {
+      $( "#goalEndDate" ).removeClass( "hide" ).addClass( "show" );
       $( "#goalStartDate" ).removeClass( "show" ).addClass( "hide" );
-    } else if ($( "#goal_goalType" ).val() == "2" ) {
+      $( "#goalTraining" ).removeClass( "show" ).addClass( "hide" );
+      $( "#goalGoalInterval" ).removeClass( "show" ).addClass( "hide" );
+      $( "#goalGoalNumber" ).removeClass( "show" ).addClass( "hide" );
+    }
+    else if ($( "#goal_goalType" ).val() == "2" ) {
+      $( "#goalEndDate" ).removeClass( "hide" ).addClass( "show" ); 
+      $( "#goalStartDate" ).removeClass( "show" ).addClass( "hide" );
+      $( "#goalTraining" ).removeClass( "show" ).addClass( "hide" );
+      $( "#goalGoalInterval" ).removeClass( "show" ).addClass( "hide" );
+      $( "#goalGoalNumber" ).removeClass( "show" ).addClass( "hide" );
+    }
+    else if ($( "#goal_goalType" ).val() == "3" ) {
       $( "#goalStartDate" ).removeClass( "hide" ).addClass( "show" );
-    } else if ($( "#goal_goalType" ).val() == "2" ) {
-      $( "#goalStartDate" ).removeClass( "hide" ).addClass( "show" );
+      $( "#goalTraining" ).removeClass( "hide" ).addClass( "show" );
+      $( "#goalRecurring" ).removeClass( "hide" ).addClass( "show" );
 
-});
-</script>
+    };
+  });
+  $( "#goal_training" ).change(function() {
+    if ($( "#goal_training" ).val() == true ) {
+      $( "#goalTrainingType" ).removeClass( "hide" ).addClass( "show" );
+      $( "#goalGoalInterval" ).removeClass( "hide" ).addClass( "show" );
+      $( "#goalGoalNumber" ).removeClass( "hide" ).addClass( "show" );
+      $( "#goalTrainingTimeInterval" ).removeClass( "hide" ).addClass( "show" );
+    };
+  });
+  $( "#goal_goalInterval" ).change(function() {
+    if ($( "#goal_goalInterval" ).val() == "Daily" ) {
+      $( ".goal_goalNumber label" ).text( "Number to Training Events per Day" );
+    }
+    else if ($( "#goal_goalInterval" ).val() == "Weekly" ) {
+      $( ".goal_goalNumber label" ).text( "Number to Training Events per Week" );
+    }
+    else if ($( "#goal_goalInterval" ).val() == "Monthly" ) {
+      $( ".goal_goalNumber label" ).text( "Number to Training Events per Month" );   
+    }
+    else if ($( "#goal_goalInterval" ).val() == "Annually" ) {
+      $( ".goal_goalNumber label" ).text( "Number to Training Events per Year" );    
+    };
+  });
+</script
+

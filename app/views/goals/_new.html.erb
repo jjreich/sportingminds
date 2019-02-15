@@ -1,10 +1,11 @@
-<div class="grid-x">
-	<div class="cell large-8 large-offset-2 medium-10 medium-offset-1 small-12">
-		<h2>New Goal</h2>
+<div class="grid-container full">
+	<div class="grid-x">
+		<div class="cell large-8 large-offset-2 medium-10 medium-offset-1 small-12">
+			<h2>New Goal</h2>
 
-		<%= render 'form', goal: @goal %>
+			<%= render 'form', goal: @goal %>
 
-		<%= link_to 'Return to Goals', goals_path, :class => "", remote: true  %>
+		</div>
 	</div>
 </div>
 
