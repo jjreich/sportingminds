@@ -37,19 +37,5 @@
 		</div>
 	</div>
 
-	<div class="grid-x grid-padding-x">
-		<div class="cell large-8 large-offset-2 medium-10 medium-offset-1 small-12">	
 
-			<h3>Athletes who have chosen me as an Accountability Partner</h3>
-
-			<% if @user.inverse_accountability_partners.present? %>
-
-				<% @user.inverse_accountability_partners.each do |user| %>
-				    <p><%= user.first_name %> <%= user.last_name %></p>
-				<% end %>
-
-			<% end %>
-
-		</div>
-	</div>
 </div>

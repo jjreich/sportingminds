@@ -69,11 +69,13 @@
 
       <% comments = Comment.roots.where(:goal_id => @goal.id) %>
 
-      <% comments.order(:created_at).reverse.each do |comment| %>
-        <%= render 'comment', comment: comment %>
-      <% end %>
+      <div class="comments">
+        <% comments.order(:created_at).reverse.each do |comment| %>
+          <%= render 'comment', comment: comment %>
+        <% end %>
+      </div>
 
-      <%= link_to "Add new comment", new_comment_path(:goal_id => @goal.id) %>
+      <%= link_to "Add new comment", new_comment_path(:goal_id => @goal.id), :class => "", remote: true %>
 
       </br>
 

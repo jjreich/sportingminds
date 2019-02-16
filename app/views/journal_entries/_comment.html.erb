@@ -1,5 +1,5 @@
 <p>
-	<%= comment.created_at.strftime ("%m/%d/%y %l:%M%P") %> - <%= comment.body %> (<%= User.find(comment.user_id).fullName %>) <%= link_to "Reply", new_comment_path(:journal_entry_id => comment.journal_entry_id, :parent_id => comment.id) %>
+	<%= comment.created_at.strftime ("%m/%d/%y %l:%M%P") %> - <%= comment.body %> (<%= User.find(comment.user_id).fullName %>) <%= link_to "Reply", new_comment_path(:journal_entry_id => comment.journal_entry_id, :parent_id => comment.id), :class => "", remote: true %>
  </p>
 
 <% if comment.has_children? %>

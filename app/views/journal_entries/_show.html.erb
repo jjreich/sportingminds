@@ -41,7 +41,7 @@
     <b>Associated Goals:</b>
 
     <% @journal_entry.goals.where(:active => true).each do |goal| %>
-      <%= link_to goal do %>
+      <%= link_to goal, :class => "", remote: true do %>
         <%= goal.name %></br>
       <% end %>
     <% end %>
@@ -52,11 +52,13 @@
 
     <% comments = Comment.roots.where(:journal_entry_id => @journal_entry.id) %>
 
-    <% comments.order(:created_at).reverse.each do |comment| %>
-      <%= render 'comment', comment: comment %>
-    <% end %>
+    <div class="comments">
+      <% comments.order(:created_at).reverse.each do |comment| %>
+        <%= render 'comment', comment: comment %>
+      <% end %>
+    </div>
 
-    <%= link_to "Add comments to this goal", new_comment_path(:journal_entry_id => @journal_entry.id) %>
+    <%= link_to "Add new comment", new_comment_path(:journal_entry_id => @journal_entry.id), :class => "", remote: true %>
 
 
   </div>
