@@ -11,7 +11,7 @@ class SupportedUsersController < ApplicationController
   # GET /supported_users/1.json
   def show
     @active_goals = @supported_user.goals.where(:active => true)
-    @recent_journal_entries = @supported_user.journal_entries
+    @recent_journal_entries = @supported_user.journal_entries.order(:created_at).reverse.last(20)
   end
 
   # GET /supported_users/new

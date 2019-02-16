@@ -1,24 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Supported Users</h1>
+<div class="grid-container full">
+  <div class="grid-x grid-padding-x">
+    <div class="cell large-8 large-offset-2 medium-10 medium-offset-1 small-12">
 
-<table>
-  <thead>
-    <tr>
-      <th>Supported Users</th>
-    </tr>
-  </thead>
+      <h2>Supported Users</h2>
 
-  <tbody>
-    <% @supported_users.each do |supported_user| %>
-      <tr>
-        <td><%= supported_user.fullName %><%= link_to supported_user_path(supported_user), :class => "", remote: true do %> 
-              <%= image_tag("view24.png", width: "12", :alt => "view") %>
-            <% end %> &nbsp</td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <% @supported_users.each do |supported_user| %>
+        <p>
+          <%= supported_user.fullName %><%= link_to supported_user_path(supported_user), :class => "", remote: true do %> &nbsp
+            <%= image_tag("view24.png", width: "12", :alt => "view") %>
+          <% end %> 
+        </p>
+      <% end %>
+
+
+    </div>
+  </div>
+</div>
+
 
 <br>
 

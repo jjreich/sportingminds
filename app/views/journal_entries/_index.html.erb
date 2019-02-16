@@ -1,12 +1,16 @@
-<div class="grid-x">
+<div class="grid-x grid-padding-x">
   <div class="cell large-8 large-offset-2 medium-10 medium-offset-1 small-12">
     <p id="notice"><%= notice %></p>
     <h2>Training Log</h2>
     <% @journal_entries.each do |journal_entry| %>
-
+      <% commentCount = Comment.where(:journal_entry_id => journal_entry.id).count %>
       <div class="grid-x grid-padding-x">
         <div class="cell large-12">
           <p class="text-left"><b><%= journal_entry.dateTimeOfTraining.strftime ("%m/%d/%y %l:%M%P") %> (<%= journal_entry.duration %> minutes)</b> - <%= journal_entry.trainingAccomplished %> &nbsp
+
+            <% if commentCount > 0 %>
+              <%= image_tag("comments.png", width: "28") %><span style="position:relative;left:-19px;top:-3px;color:gray;"><%= commentCount %></span>
+            <% end %>
 
             <%= link_to journal_entry, :class => "", remote: true do %> 
               <%= image_tag("view24.png", width: "12", :alt => "view") %>
