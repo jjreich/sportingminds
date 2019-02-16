@@ -61,7 +61,9 @@
         
       <% end %>
 
-      <%= link_to "Add training for this goal", new_journal_entry_path(:goal_id => @goal.id), :class => "", remote: true  %>
+      <% if current_user.id == @goal.user_id %>
+        <%= link_to "Add training for this goal", new_journal_entry_path(:goal_id => @goal.id), :class => "", remote: true  %>
+      <% end %>
 
       </br></br>
 
