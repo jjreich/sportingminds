@@ -20,11 +20,9 @@
 			<div class="grid-x grid-padding-x">
 				<div class="cell large-12">
 					<div class="comments">
-						<p class="text-left"><span class="<%= className %>"> </span><b><%= goal.name %></b> - <%= goal.description %> <%= goal.goalStartDate.strftime ("%m/%d/%y") %> - <%= goal.goalEndDate.strftime ("%m/%d/%y") %> &nbsp
+						<p class="text-left"><div class="inlineBlock"><span class="<%= className %>"> </span><b><%= goal.name %></b> - <%= goal.description %> <%= goal.goalStartDate.strftime ("%m/%d/%y") %> - <%= goal.goalEndDate.strftime ("%m/%d/%y") %> &nbsp</div>
 							<% if commentCount > 0 %>
-		              			<span>
-		              				<%= image_tag("comments.png", width: "28") %><span style="position:relative;left:-19px;top:-3px;color:gray;"><%= commentCount %></span>
-		              			</span>
+		              			<div class="comments_container"><%= commentCount %></div>&nbsp
 		            		<% end %>
 
 							<%= link_to goal, :class => "", remote: true do %> 

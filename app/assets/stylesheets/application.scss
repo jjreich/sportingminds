@@ -22,6 +22,18 @@
    margin-left: 10px;
  }
 
+ .comments_container {
+   height: 22px;
+   width: 34px;
+   background-image: image-url('comments36.png');
+   background-repeat: no-repeat;
+   background-size: auto;
+   text-align: center;
+   color:gray;
+   display: inline-block;
+   line-height: 130%;
+ }
+
  .gray {
  	background-color: #e6e6e6;
  }
@@ -29,6 +41,10 @@
  .highlight {
   border-color: red;
   border: 1px solid red;
+ }
+
+ .inlineBlock {
+   display: inline-block;
  }
 
  .journalEntry {

@@ -48,10 +48,9 @@
 
           <% commentCount = Comment.where(:journal_entry_id => journal_entry.id).count %>
 
-          <p>&nbsp &nbsp<span class="<%= journalClass %>"></span> <%= journal_entry.dateTimeOfTraining.strftime ("%m/%d/%y %l:%M%P") %> - <%= journal_entry.trainingAccomplished %> for <%= journal_entry.duration %> minutes &nbsp
+          <p><div class="inlineBlock">&nbsp &nbsp<span class="<%= journalClass %>"></span><%= journal_entry.dateTimeOfTraining.strftime ("%m/%d/%y %l:%M%P") %> - <%= journal_entry.trainingAccomplished %> for <%= journal_entry.duration %> minutes &nbsp</div>
             <% if commentCount > 0 %>
-              <span><%= image_tag("comments.png", width: "28") %><span style="position:relative;left:-19px;top:-3px;color:gray;"><%= commentCount %></span>
-              </span>
+              <div class="comments_container"><%= commentCount %></div>&nbsp
               <%= link_to journal_entry, :class => "", remote: true do %> 
                 <%= image_tag("view24.png", width: "12", :alt => "view") %>
               <% end %>
