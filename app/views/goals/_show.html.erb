@@ -50,8 +50,8 @@
 
           <p>&nbsp &nbsp<span class="<%= journalClass %>"></span> <%= journal_entry.dateTimeOfTraining.strftime ("%m/%d/%y %l:%M%P") %> - <%= journal_entry.trainingAccomplished %> for <%= journal_entry.duration %> minutes &nbsp
             <% if commentCount > 0 %>
-              <div><%= image_tag("comments.png", width: "28") %><span style="position:relative;left:-19px;top:-3px;color:gray;"><%= commentCount %></span>
-              </div>
+              <span><%= image_tag("comments.png", width: "28") %><span style="position:relative;left:-19px;top:-3px;color:gray;"><%= commentCount %></span>
+              </span>
               <%= link_to journal_entry, :class => "", remote: true do %> 
                 <%= image_tag("view24.png", width: "12", :alt => "view") %>
               <% end %>

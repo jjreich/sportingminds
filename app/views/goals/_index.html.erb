@@ -22,9 +22,9 @@
 					<div class="comments">
 						<p class="text-left"><span class="<%= className %>"> </span><b><%= goal.name %></b> - <%= goal.description %> <%= goal.goalStartDate.strftime ("%m/%d/%y") %> - <%= goal.goalEndDate.strftime ("%m/%d/%y") %> &nbsp
 							<% if commentCount > 0 %>
-		              			<div>
+		              			<span>
 		              				<%= image_tag("comments.png", width: "28") %><span style="position:relative;left:-19px;top:-3px;color:gray;"><%= commentCount %></span>
-		              			</div>
+		              			</span>
 		            		<% end %>
 
 							<%= link_to goal, :class => "", remote: true do %> 
