@@ -28,7 +28,7 @@
            - <%= @goal.trainingTimeInterval %> minutes, <%= @goal.goalNumber %> times each <%= timePeriod %>.
         <% end %>
       </p>
-      
+
       <% if @goal.description.present? %>
         <p>
           <strong>Description:</strong>
@@ -59,9 +59,9 @@
             <div class="inlineBlock">&nbsp &nbsp<span class="<%= journalClass %>"></span><%= journal_entry.dateTimeOfTraining.strftime ("%m/%d/%y %l:%M%P") %> - <%= journal_entry.trainingAccomplished %> for <%= journal_entry.duration %> minutes &nbsp</div>
             <% if commentCount > 0 %>
               <div class="comments_container"><%= commentCount %></div>&nbsp
-              <%= link_to journal_entry, :class => "", remote: true do %> 
-                <%= image_tag("view24.png", width: "12", :alt => "view") %>
-              <% end %>
+            <% end %>
+            <%= link_to journal_entry, :class => "", remote: true do %> 
+              <%= image_tag("view24.png", width: "12", :alt => "view") %>
             <% end %>
             
           </p>
