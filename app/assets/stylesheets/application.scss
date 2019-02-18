@@ -18,6 +18,12 @@
 
  @import "foundation_and_overrides";
 
+ a {
+        &:hover {
+            background-color: transparent;
+        }
+ }
+
  .comments {
    margin-left: 10px;
  }

@@ -1,0 +1,37 @@
+<% commentCount = Comment.where(:goal_id => goal.id).count %>
+<% goalTimeInterval = (goal.goalEndDate - goal.goalStartDate).to_f %>
+<% daysSinceGoalStartDate = (Date.today - goal.goalStartDate).to_f %>
+<% timePercentagePassedForGoal = daysSinceGoalStartDate/goalTimeInterval %>
+	<% if goal.goalType == "1" || goal.goalType == "2" %>
+	<% elsif goal.percentComplete >= 1.0 or goal.complete == true %>
+		<% className = "myBlueButton" %>
+	<% elsif (goal.percentComplete >= timePercentagePassedForGoal) %>
+		<% className = "myGreenButton" %>
+	<% elsif (goal.percentComplete >= timePercentagePassedForGoal-0.1) %>
+		<% className = "myYellowButton" %>
+	<% else %>
+		<% className = "myRedButton" %>
+<% end %>
+
+
+	<div class="cell large-12">
+		<div class="comments">
+			<p class="text-left"><div class="inlineBlock"><span class="<%= className %>"> </span><b><%= goal.name %></b> - <%= goal.description %> <%= goal.goalStartDate.strftime ("%m/%d/%y") %> - <%= goal.goalEndDate.strftime ("%m/%d/%y") %> &nbsp</div>
+				<% if commentCount > 0 %>
+          			<div class="comments_container"><%= commentCount %></div>&nbsp&nbsp
+        		<% end %>
+
+				<%= link_to goal, :class => "", remote: true do %> 
+					<%= image_tag("view24.png", width: "12", :alt => "view") %>
+				<% end %> &nbsp
+
+				<%= link_to edit_goal_path(goal), :class => "", remote: true do %> 
+					<%= image_tag("edit24.png", width: "16", :alt => "edit") %>
+				<% end %> &nbsp
+
+	            <%= link_to goal, method: :delete, data: { confirm: 'Are you sure?' }, :class => "", remote: true do %> 
+	              <%= image_tag("trashRecycleBin.png", width: "16", :alt => "edit") %>
+	            <% end %>
+			</p>
+		</div>
+	</div>				

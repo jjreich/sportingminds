@@ -48,7 +48,7 @@
 
     </br>
 
-    <h4>Comments</h4>
+    <h4>Comments <%= image_tag("comments.png", width: "30") %></h4>
 
     <% comments = Comment.roots.where(:journal_entry_id => @journal_entry.id) %>
 

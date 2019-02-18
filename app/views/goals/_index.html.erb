@@ -2,44 +2,37 @@
 	<div class="cell large-8 large-offset-2 medium-10 medium-offset-1 small-12">
     <p id="notice"><%= notice %></p>
 		<h2>Goals</h2>
-		<% @goals.each do |goal| %>
-			<% commentCount = Comment.where(:goal_id => goal.id).count %>
-			<% goalTimeInterval = (goal.goalEndDate - goal.goalStartDate).to_f %>
-			<% daysSinceGoalStartDate = (Date.today - goal.goalStartDate).to_f %>
-			<% timePercentagePassedForGoal = daysSinceGoalStartDate/goalTimeInterval %>
-	      	<% if goal.percentComplete >= 1.0 or goal.complete == true %>
-	        	<% className = "myBlueButton" %>
-				<% elsif (goal.percentComplete >= timePercentagePassedForGoal) %>
-					<% className = "myGreenButton" %>
-				<% elsif (goal.percentComplete >= timePercentagePassedForGoal-0.1) %>
-					<% className = "myYellowButton" %>
-				<% else %>
-					<% className = "myRedButton" %>
+
+		<% if @goals.where(:goalType => "1").present? %>
+
+			<u><b>Outcome Goals</b></u>
+
+			<% outcomeGoals = @goals.where(:goalType => "1") %>
+			<% outcomeGoals.each do |goal| %>
+				<%= render 'goalsView', goal: goal %>
 			<% end %>
 
-			<div class="grid-x grid-padding-x">
-				<div class="cell large-12">
-					<div class="comments">
-						<p class="text-left"><div class="inlineBlock"><span class="<%= className %>"> </span><b><%= goal.name %></b> - <%= goal.description %> <%= goal.goalStartDate.strftime ("%m/%d/%y") %> - <%= goal.goalEndDate.strftime ("%m/%d/%y") %> &nbsp</div>
-							<% if commentCount > 0 %>
-		              			<div class="comments_container"><%= commentCount %></div>&nbsp
-		            		<% end %>
+		<% end %>
 
-							<%= link_to goal, :class => "", remote: true do %> 
-								<%= image_tag("view24.png", width: "12", :alt => "view") %>
-							<% end %> &nbsp
+		<% if @goals.where(:goalType => "2").present? %>
 
-							<%= link_to edit_goal_path(goal), :class => "", remote: true do %> 
-								<%= image_tag("edit24.png", width: "16", :alt => "edit") %>
-							<% end %> &nbsp
+			<u><b>Performance Goals</b></u>
 
-				            <%= link_to goal, method: :delete, data: { confirm: 'Are you sure?' }, :class => "", remote: true do %> 
-				              <%= image_tag("trashRecycleBin.png", width: "16", :alt => "edit") %>
-				            <% end %>
-						</p>
-					</div>
-				</div>				
-			</div>
+			<% performanceGoals = @goals.where(:goalType => "2") %>
+			<% performanceGoals.each do |goal| %>
+				<%= render 'goalsView', goal: goal %>
+			<% end %>
+
+		<% end %>
+
+		<% if @goals.where(:goalType => "3").present? %>
+
+			<u><b>Process Goals</b></u>
+
+			<% processGoals = @goals.where(:goalType => "3") %>
+			<% processGoals.each do |goal| %>
+				<%= render 'goalsView', goal: goal %>
+			<% end %>
 		<% end %>
 
 		<%= link_to 'New Goal', new_goal_path, :class => "", remote: true  %>

@@ -21,8 +21,14 @@
         <% timePeriod = "year" %>
       <% end %>
 
-      <p><%= @goal.name %> - <%= @goal.trainingTimeInterval %> minutes, <%= @goal.goalNumber %> times each <%= timePeriod %>.</p>
-
+      <p>
+        <%= @goal.name %>
+        
+        <% if @goal.goalType == "3" %>
+           - <%= @goal.trainingTimeInterval %> minutes, <%= @goal.goalNumber %> times each <%= timePeriod %>.
+        <% end %>
+      </p>
+      
       <% if @goal.description.present? %>
         <p>
           <strong>Description:</strong>
@@ -48,7 +54,9 @@
 
           <% commentCount = Comment.where(:journal_entry_id => journal_entry.id).count %>
 
-          <p><div class="inlineBlock">&nbsp &nbsp<span class="<%= journalClass %>"></span><%= journal_entry.dateTimeOfTraining.strftime ("%m/%d/%y %l:%M%P") %> - <%= journal_entry.trainingAccomplished %> for <%= journal_entry.duration %> minutes &nbsp</div>
+          <p>
+
+            <div class="inlineBlock">&nbsp &nbsp<span class="<%= journalClass %>"></span><%= journal_entry.dateTimeOfTraining.strftime ("%m/%d/%y %l:%M%P") %> - <%= journal_entry.trainingAccomplished %> for <%= journal_entry.duration %> minutes &nbsp</div>
             <% if commentCount > 0 %>
               <div class="comments_container"><%= commentCount %></div>&nbsp
               <%= link_to journal_entry, :class => "", remote: true do %> 
@@ -85,7 +93,23 @@
 
       </br>
 
+    <% linkDisplay = "" %>
+    <% displayLinkStatus = false %>
 
+    <% if @goal.goalType == "1" %>
+      <% linkDisplay = "Add supporting performance or process goal" %>
+      <% displayLinkStatus = true %>
+    <% elsif @goal.goalType == "2" %>
+      <% linkDisplay = "Add supporting performance or process goal" %>
+      <% displayLinkStatus = true %>
+    <% end %>
+
+    <% if displayLinkStatus %>
+      <%= link_to linkDisplay, new_goal_path(:parent_id => @goal.id), :class => "", remote: true %> 
+    <% end %>
+
+    </br>
+    </br> 
 
     <%= link_to 'Return to Goals', goals_path, :class => "", remote: true %>
 

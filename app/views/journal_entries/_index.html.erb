@@ -9,7 +9,7 @@
           <p class="text-left"><div class="inlineBlock"><b><%= journal_entry.dateTimeOfTraining.strftime ("%m/%d/%y %l:%M%P") %> (<%= journal_entry.duration %> minutes)</b> - <%= journal_entry.trainingAccomplished %> &nbsp</div>
 
             <% if commentCount > 0 %>
-              <div class="comments_container"><%= commentCount %></div>&nbsp
+              <div class="comments_container"><%= commentCount %></div>&nbsp&nbsp
             <% end %>
 
             <%= link_to journal_entry, :class => "", remote: true do %> 

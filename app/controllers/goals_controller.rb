@@ -18,7 +18,7 @@ class GoalsController < ApplicationController
 
   # GET /goals/new
   def new
-    @goal = Goal.new(:user_id => current_user.id)
+    @goal = Goal.new(:user_id => current_user.id, :parent_id => params[:parent_id])
     @sports = Sport.all
     @trainingTypes = TrainingType.all
     @goalTypes = GoalType.all
