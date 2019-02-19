@@ -14,6 +14,8 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
+    session[:return_to] ||= request.referer
+
     if params[:goal_id].present?
       @goal = Goal.find(params[:goal_id])
       @comment = Comment.new(:user_id => current_user.id, :goal_id => @goal.id, :parent_id => params[:parent_id])

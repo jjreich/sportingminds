@@ -14,24 +14,24 @@
 <% end %>
 
 
-	<div class="cell large-12">
-		<div class="comments">
-			<p class="text-left"><div class="inlineBlock"><span class="<%= className %>"> </span><b><%= goal.name %></b> - <%= goal.description %> <%= goal.goalStartDate.strftime ("%m/%d/%y") %> - <%= goal.goalEndDate.strftime ("%m/%d/%y") %> &nbsp</div>
-				<% if commentCount > 0 %>
-          			<div class="comments_container"><%= commentCount %></div>&nbsp&nbsp
-        		<% end %>
+<div class="cell large-12">
+	<div class="comments">
+		<p class="text-left"><div class="inlineBlock"><span class="<%= className %>"> </span><b><%= goal.name %></b> - <%= goal.description %> <%= goal.goalStartDate.strftime ("%m/%d/%y") %> - <%= goal.goalEndDate.strftime ("%m/%d/%y") %> &nbsp</div>
+			<% if commentCount > 0 %>
+      			<div class="comments_container"><%= commentCount %></div>&nbsp&nbsp
+    		<% end %>
 
-				<%= link_to goal, :class => "", remote: true do %> 
-					<%= image_tag("view24.png", width: "12", :alt => "view") %>
-				<% end %> &nbsp
+			<%= link_to goal, :class => "", remote: true do %> 
+				<%= image_tag("view24.png", width: "12", :alt => "view") %>
+			<% end %> &nbsp
 
-				<%= link_to edit_goal_path(goal), :class => "", remote: true do %> 
-					<%= image_tag("edit24.png", width: "16", :alt => "edit") %>
-				<% end %> &nbsp
+			<%= link_to edit_goal_path(goal), :class => "", remote: true do %> 
+				<%= image_tag("edit24.png", width: "16", :alt => "edit") %>
+			<% end %> &nbsp
 
-	            <%= link_to goal, method: :delete, data: { confirm: 'Are you sure?' }, :class => "", remote: true do %> 
-	              <%= image_tag("trashRecycleBin.png", width: "16", :alt => "edit") %>
-	            <% end %>
-			</p>
-		</div>
-	</div>				
+            <%= link_to goal, method: :delete, data: { confirm: 'Are you sure?' }, :class => "", remote: true do %> 
+              <%= image_tag("trashRecycleBin.png", width: "16", :alt => "edit") %>
+            <% end %>
+		</p>
+	</div>
+</div>				

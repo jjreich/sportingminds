@@ -25,20 +25,18 @@
 	</div>
 </div>
 
-<div id="applicationContent">
+<% if user_signed_in? %>
 
-	<% if user_signed_in? %>
+	<% if current_user.has_role? :athlete %>
 
-	  <% if current_user.has_role? :athlete %>
+		<div id="applicationContent">
+
+		</div>
 	    
-	  <% end %>
-
 	<% end %>
 
-</div>
+<% end %>
 
 
 
 
-
-<%= javascript_include_tag "application" %>
