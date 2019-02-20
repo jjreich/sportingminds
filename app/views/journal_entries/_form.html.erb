@@ -20,23 +20,29 @@
       <%= f.input :goal_ids, collection: @goals, as: :check_boxes, input_html: { multiple: true } %>
     <% end %>
     <%= f.input :dateTimeOfTraining %>
-    <%= f.input :duration, required: true %>
-    <%= f.input :organizedPractice %>
+    <div class="grid-x">
+      <div class="cell large-3">
+        <%= f.input :duration, required: true %>
+      </div>
+      <div class="cell large-3">
+        <%= f.input :organizedPractice %>
+      </div>
+    </div>
     <%= f.input :trainingAccomplished, required: true %>
 
-    <div class="slider" data-slider data-initial-start="5" data-end="10">
-      <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls="journal_entrymotivationLevel"></span>
-      <span class="slider-fill" data-slider-fill></span>
-      <%= f.input :motivationLevel, required: true, input_html: { min: '0', max: '10' } %>
-    </div>
-
-    <div class="slider" data-slider data-initial-start="5" data-end="10">
-      <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls="journal_entryperformanceLevel"></span>
-      <span class="slider-fill" data-slider-fill></span>
-      <%= f.input :performanceLevel, required: true, input_html: { min: '0', max: '10' } %>
-    </div>
   </div>
 
+  <div class="grid-x">
+    <div class="cell large-6">
+      <%= f.input :motivationLevel, required: true, input_html: { min: '0', max: '10' } %>
+      <div id="slider-vertical" style="height:200px;"></div>
+    </div>
+    <div class="cell large-6">
+      <%= f.input :performanceLevel, required: true, input_html: { min: '0', max: '10' } %>
+      <div id="slider-vertical2" style="height:200px;"></div>
+    </div>
+  </div>
+   
   </br>
   </br>
 
@@ -44,16 +50,34 @@
     <%= f.submit class: 'button' %>
   </div>
 
-  <script>
-    $(document).foundation();
-
-    var slider = document.getElementById("myRange");
-    var output = document.getElementById("demo");
-    output.innerHTML = slider.value;
-
-    slider.oninput = function() {
-      output.innerHTML = this.value;
-    }
-
-  </script>
 <% end %>
+
+<script>
+  $( function() {
+    $( "#slider-vertical" ).slider({
+      orientation: "vertical",
+      range: "min",
+      min: 0,
+      max: 10,
+      value: 5,
+      slide: function( event, ui ) {
+        $( "#journal_entry_motivationLevel" ).val( ui.value );
+      }
+    });
+    $( "#journal_entry_motivationLevel" ).val( $( "#slider-vertical" ).slider( "value" ) );
+  } );
+
+  $( function() {
+    $( "#slider-vertical2" ).slider({
+      orientation: "vertical",
+      range: "min",
+      min: 0,
+      max: 10,
+      value: 5,
+      slide: function( event, ui ) {
+        $( "#journal_entry_performanceLevel" ).val( ui.value );
+      }
+    });
+    $( "#journal_entry_performanceLevel" ).val( $( "#slider-vertical" ).slider( "value" ) );
+  } );
+  </script>

@@ -41,6 +41,7 @@ gem 'sendgrid-ruby'
 # gem 'capistrano-rails', group: :development
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'simple_form'
 gem 'foundation-rails', '~> 6.4.3'
 gem 'autoprefixer-rails'

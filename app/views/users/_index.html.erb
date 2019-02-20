@@ -1,0 +1,14 @@
+<div id="users">
+
+
+    <% @users.each do |user| %>
+    	<p>
+    		<%= user.first_name %> <%= user.last_name %> (<%= user.email %>) <%= link_to "Add as accountability partner", accountability_partnerships_path(:accountability_partner_id => user.id), :method => :post %>
+    	</p>
+    <% end %>
+
+</div>
+
+<button class="close-button" data-close aria-label="Close reveal" type="button">
+  <span aria-hidden="true">&times;</span>
+</button>

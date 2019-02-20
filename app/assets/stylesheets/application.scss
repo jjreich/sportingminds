@@ -13,15 +13,18 @@
  *= require_tree .
  *= require_self
  *= require foundation_and_overrides
+ *= require jquery-ui
+ *= require jquery-ui/slider
+
 
  */
 
  @import "foundation_and_overrides";
 
  a {
-        &:hover {
-            background-color: transparent;
-        }
+    &:hover {
+        background-color: transparent;
+   }
  }
 
  .comments {
