@@ -100,6 +100,7 @@ class JournalEntriesController < ApplicationController
     end
 
     respond_to do |format|
+      format.js
       format.html { redirect_to journal_entries_url, notice: 'Journal entry was successfully destroyed.' }
       format.json { head :no_content }
     end
