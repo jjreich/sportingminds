@@ -85,7 +85,11 @@
         <% end %>
       </div>
 
-      <%= link_to "Add new comment", new_comment_path(:goal_id => @goal.id), :class => "", remote: true %>
+      <div id="addComments">
+
+      </div>
+
+      <%= link_to "Add new comment", new_comment_path(:goal_id => @goal.id, :pastCommentID => "addComments"), :class => "", remote: true %>
 
       </br>
 

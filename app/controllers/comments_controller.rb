@@ -25,6 +25,8 @@ class CommentsController < ApplicationController
     else
       @comment = Comment.new(:user_id => current_user.id)
     end
+
+    @pastCommentID = "#" + params[:pastCommentID]
   end
 
   # GET /comments/1/edit
