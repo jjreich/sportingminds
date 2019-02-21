@@ -58,7 +58,11 @@
       <% end %>
     </div>
 
-    <%= link_to "Add new comment", new_comment_path(:journal_entry_id => @journal_entry.id), :class => "", remote: true %>
+    <div id="addComments">
+
+    </div>
+
+    <%= link_to "Add new comment", new_comment_path(:journal_entry_id => @journal_entry.id, :pastCommentID => "addComments"), :class => "", remote: true %>
 
 
   </div>
