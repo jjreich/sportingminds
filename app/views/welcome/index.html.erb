@@ -24,7 +24,7 @@
 	        <li><a><%= current_user.email %></a></li>
 	        <li><%= link_to "Sign out", destroy_user_session_path,:method => 'delete' %></li>
 	      <% else %>
-	        <li><%= link_to "Login", new_user_session_path %></li>
+	        <li><%= link_to "Login", new_user_session_path, :class => "", remote: true, data: {:"reveal-id" => "loginModal"} %></li>
 	      <% end %>
 		</ul>
 	  </div>
@@ -38,6 +38,8 @@
 
 <%= render "home" %>
 
-<%= javascript_include_tag "application" %>
+<div class="reveal" id="loginModal" data-reveal data-animation-in="hinge-in-from-middle-y" data-animation-out="hinge-out-from-middle-y">
+
+</div>
 
 
