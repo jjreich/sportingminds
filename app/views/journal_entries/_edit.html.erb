@@ -1,6 +1,16 @@
-<h1>Editing Journal Entry</h1>
+<div class="grid-container">
+	<div class="grid-x grid-padding-x">
+		<div class="cell large-10 large-offset-1 medium-10 medium-offset-1 small-12">
+			<h1>Editing Journal Entry</h1>
 
-<%= render 'form', journal_entry: @journal_entry %>
+			<%= render 'form', journal_entry: @journal_entry %>
 
-<%= link_to 'Show', @journal_entry %> |
-<%= link_to 'Back', journal_entries_path %>
+			<%= link_to 'Show', @journal_entry %> |
+			<%= link_to 'Back', journal_entries_path %>
+		</div>
+	</div>
+</div>
+
+<button class="close-button" data-close aria-label="Close reveal" type="button">
+  <span aria-hidden="true">&times;</span>
+</button>

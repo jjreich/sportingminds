@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <div class="grid-x grid-padding-x">
-  <div class="cell large-8 large-offset-2 medium-10 medium-offset-1 small-12">
+  <div class="cell large-9 large-offset-1 medium-10 medium-offset-1 small-12">
 
     <% sportIcon = "" %>
     <% sportIcon = Sport.find(@journal_entry.sport).icon if Sport.find(@journal_entry.sport).icon.present? %>
