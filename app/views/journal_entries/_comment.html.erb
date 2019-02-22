@@ -11,7 +11,7 @@
 <% if comment.has_children? %>
 	<% comment.children.order(:created_at).each do |child| %>
 		<div class="nested_comments">
-	    	<%= render 'comment', comment: child %>
+	    	<%= render 'journal_entries/comment', comment: child %>
 		</div>
 	<% end %>
 <% end %>

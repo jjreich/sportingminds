@@ -54,7 +54,7 @@
 
     <div class="comments">
       <% comments.order(:created_at).reverse.each do |comment| %>
-        <%= render 'comment', comment: comment %>
+        <%= render 'journal_entries/comment', comment: comment %>
       <% end %>
     </div>
 

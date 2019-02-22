@@ -44,9 +44,12 @@ class CommentsController < ApplicationController
 
         if @comment.goal_id.present?
           @goal = Goal.find(@comment.goal_id)
-          @goalTest = @goal.present?
-        elsif params[:journal_entry_id].present?
-          @journal_entry = JournalEntry.find(params[:journal_entry_id])
+          @renderLink = "goals/show"
+        end
+
+        if @comment.journal_entry_id.present?
+          @journal_entry = JournalEntry.find(@comment.journal_entry_id)
+          @renderLink = "journal_entries/show"
         end
 
         format.js
