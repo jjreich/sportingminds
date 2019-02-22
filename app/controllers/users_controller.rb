@@ -5,5 +5,9 @@ class UsersController < ApplicationController
 
 	def index
       	@users = User.all
+
+      	currentUserArray = [current_user]
+      	@availableAccountabilityPartners = User.all - current_user.accountability_partners - currentUserArray
+
     end
 end

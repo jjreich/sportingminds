@@ -1,11 +1,16 @@
 <div id="users">
 
 
-    <% @users.each do |user| %>
-    	<p>
-    		<%= user.first_name %> <%= user.last_name %> (<%= user.email %>) <%= link_to "Add as accountability partner", accountability_partnerships_path(:accountability_partner_id => user.id), :method => :post %>
-    	</p>
-    <% end %>
+
+	<% if @availableAccountabilityPartners.present? %>
+
+	    <% @availableAccountabilityPartners.each do |availableAccountabilityPartner| %>
+	    	<p>
+	    		<%= availableAccountabilityPartner.first_name %> <%= availableAccountabilityPartner.last_name %> (<%= availableAccountabilityPartner.email %>) <%= link_to "Add as accountability partner", accountability_partnerships_path(:accountability_partner_id => availableAccountabilityPartner.id), :method => :post %>
+	    	</p>
+	    <% end %>
+
+	 <% end %>
 
 </div>
 
