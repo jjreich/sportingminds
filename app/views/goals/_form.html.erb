@@ -1,3 +1,11 @@
+<script>
+  $( function() {
+    $( "#goal_goalStartDate" ).datepicker();
+  } );
+      $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+</script>
 
 <%= simple_form_for(@goal, :html=>{:remote => true}) do |f| %>
   <%= f.error_notification %>
@@ -26,7 +34,7 @@
       </div>
 
       <div class="hide cell" id="goalStartDate">
-        <%= f.input :goalStartDate %>
+        <%= f.input :goalStartDate, :as => :text %>
       </div>
 
       <div class="hide cell" id="goalEndDate">
@@ -127,5 +135,11 @@
       $( ".goal_goalNumber label" ).text( "Number to Training Events per Year" );    
     };
   });
-</script
 
+</script>
+
+<p>Date: <input type="text" id="datepicker"></p>
+
+
+
+ 

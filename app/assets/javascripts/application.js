@@ -15,8 +15,13 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require jquery-ui/widgets/slider
+//= require jquery-ui/widgets/datepicker
 //= require foundation
 //= require turbolinks
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
+
+$(document).on("page:load ready", function(){
+    $("input.datepicker").datepicker();
+});
