@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  respond_to :html, :js
 
   # GET /comments
   # GET /comments.json
@@ -40,6 +41,15 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
+
+        if @comment.goal_id.present?
+          @goal = Goal.find(@comment.goal_id)
+          @goalTest = @goal.present?
+        elsif params[:journal_entry_id].present?
+          @journal_entry = JournalEntry.find(params[:journal_entry_id])
+        end
+
+        format.js
         format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
