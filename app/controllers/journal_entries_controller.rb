@@ -59,6 +59,7 @@ class JournalEntriesController < ApplicationController
 
     respond_to do |format|
       if @journal_entry.save
+        format.js 
         format.html { redirect_to @journal_entry, notice: 'Journal entry was successfully created.' }
         format.json { render :show, status: :created, location: @journal_entry }
       else
