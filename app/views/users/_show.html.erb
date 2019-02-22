@@ -29,7 +29,7 @@
 				    <p>
 				      <%= accountability_partnership.accountability_partner.first_name %> <%= accountability_partnership.accountability_partner.last_name %> &nbsp
 				     
-				      	<%= link_to accountability_partnership, :method => :delete do %>
+				      	<%= link_to accountability_partnership, :method => :delete, remote: true do %>
 				      		<%= image_tag("delete.png", width: "16", :alt => "remove") %>
 				      	<% end %>
 				    </p>

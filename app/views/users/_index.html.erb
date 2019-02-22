@@ -1,13 +1,11 @@
 <div id="users">
 
-
-
 	<% if @availableAccountabilityPartners.present? %>
 
 	    <% @availableAccountabilityPartners.each do |availableAccountabilityPartner| %>
 	    	<p>
 	    		<%= availableAccountabilityPartner.first_name %> <%= availableAccountabilityPartner.last_name %> (<%= availableAccountabilityPartner.email %>) 
-	    		<%= link_to accountability_partnerships_path(:accountability_partner_id => availableAccountabilityPartner.id), :method => :post do %> &nbsp
+	    		<%= link_to accountability_partnerships_path(:accountability_partner_id => availableAccountabilityPartner.id), :method => :post, :class => "", remote: true do %> &nbsp
 	    			<%= image_tag("add1.png", width: "16", :alt => "remove") %>
 	    		<% end %>
 	    	</p>

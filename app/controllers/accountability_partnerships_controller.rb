@@ -1,5 +1,6 @@
 class AccountabilityPartnershipsController < ApplicationController
   before_action :set_accountability_partnership, only: [:show, :edit, :update]
+  respond_to :html, :js
 
   # GET /accountability_partnerships
   # GET /accountability_partnerships.json
@@ -28,6 +29,9 @@ class AccountabilityPartnershipsController < ApplicationController
 
     respond_to do |format|
       if @accountability_partnership.save
+        @user = current_user
+
+        format.js
         format.html { redirect_to @accountability_partnership, notice: 'Accountability partnership was successfully created.' }
         format.json { render :show, status: :created, location: @accountability_partnership }
       else
@@ -57,6 +61,9 @@ class AccountabilityPartnershipsController < ApplicationController
     @accountability_partnership = current_user.accountability_partnerships.find(params[:id])
     @accountability_partnership.destroy
     respond_to do |format|
+      @user = current_user
+
+      format.js
       format.html { redirect_to accountability_partnerships_url, notice: 'Accountability partnership was successfully destroyed.' }
       format.json { head :no_content }
     end
