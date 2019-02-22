@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Team:</strong>
+  <%= @team_user_relationship.team_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @team_user_relationship.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_team_user_relationship_path(@team_user_relationship) %> |
+<%= link_to 'Back', team_user_relationships_path %>

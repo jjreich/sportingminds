@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :team_user_relationships
+  resources :teams
   resources :accountability_partnerships
   resources :comments
   resources :goals

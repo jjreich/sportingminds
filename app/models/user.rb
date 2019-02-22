@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :accountability_partners, :through => :accountability_partnerships
   has_many :inverse_accountability_partnerships, :class_name => "AccountabilityPartnership", :foreign_key => "accountability_partner_id"
   has_many :inverse_accountability_partners, :through => :inverse_accountability_partnerships, :source => :user
+  has_many :team_user_relationships
+  has_many :teams, :through => :team_user_relationships
 
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable
