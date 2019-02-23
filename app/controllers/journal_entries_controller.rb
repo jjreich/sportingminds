@@ -18,22 +18,34 @@ class JournalEntriesController < ApplicationController
 
   # GET /journal_entries/new
   def new
-    @journal_entry = JournalEntry.new(:user_id => current_user.id)
+    isCoach = current_user.has_role? :coach
+    isManager = current_user.has_role? :manager
+    isTeamTraining = params[:team_id].present?
+
     @sports = Sport.all
     if (current_user.has_role? :admin) 
       @goals = Goal.all
     elsif (current_user.has_role? :athlete)
-      @goals = Goal.where("user_id = ?", current_user.id)
-
+      @goals = Goal.where(:user_id => current_user.id, :active => true) 
     end
+
+    if (isCoach || isManager) && isTeamTraining
+      @goals = Goal.where(:active => true, :team_id => params[:team_id])
+    end 
 
     if params[:goal_id].present?
       @goal = Goal.find(params[:goal_id])
-      @journal_entry = JournalEntry.new(:user_id => current_user.id, :goal_ids => [@goal.id], :sport => @goal.sport, :trainingAccomplished => @goal.name)
+      @sport = @goal.sport
+      @journal_entry = JournalEntry.new(:user_id => current_user.id, :goal_ids => [@goal.id], :sport => @goal.sport, :trainingAccomplished => @goal.name, :team_id => params[:team_id])
     else
-      @journal_entry = JournalEntry.new(:user_id => current_user.id)
+      @journal_entry = JournalEntry.new(:user_id => current_user.id, :team_id => params[:team_id])
     end
 
+    if isTeamTraining 
+      @team = Team.find(params[:team_id])
+      @sport = @team.sport
+      @journal_entry = JournalEntry.new(:user_id => current_user.id, :team_id => params[:team_id], :sport => @team.sport,)
+    end
   end
 
   # GET /journal_entries/1/edit
