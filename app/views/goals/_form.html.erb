@@ -1,12 +1,3 @@
-<script>
-  $( function() {
-    $( "#goal_goalStartDate" ).datepicker();
-  } );
-      $( function() {
-    $( "#datepicker" ).datepicker();
-  } );
-</script>
-
 <%= simple_form_for(@goal, :html=>{:remote => true}) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -15,6 +6,7 @@
     <div class="grid-x grid-margin-x">
 
       <%= f.hidden_field :user_id %>
+      <%= f.input :team_id %>
       <%= f.input :parent_id %>
       <div class="cell large-6 large-offset-0 medium-6 medium-offset-0 small-10 small-offset-1">
         <%= f.input :name %>
@@ -34,7 +26,7 @@
       </div>
 
       <div class="hide cell" id="goalStartDate">
-        <%= f.input :goalStartDate, :as => :text %>
+        <%= f.input :goalStartDate %>
       </div>
 
       <div class="hide cell" id="goalEndDate">
@@ -108,9 +100,9 @@
     }
     else if ($( "#goal_goalType" ).val() == "3" ) {
       $( "#goalStartDate" ).removeClass( "hide" ).addClass( "show" );
+      $( "#goalEndDate" ).removeClass( "hide" ).addClass( "show" );
       $( "#goalTraining" ).removeClass( "hide" ).addClass( "show" );
       $( "#goalRecurring" ).removeClass( "hide" ).addClass( "show" );
-
     };
   });
   $( "#goal_training" ).change(function() {
@@ -138,7 +130,7 @@
 
 </script>
 
-<p>Date: <input type="text" id="datepicker"></p>
+
 
 
 
