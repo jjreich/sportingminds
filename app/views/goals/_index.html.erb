@@ -1,40 +1,81 @@
 <div class="grid-x grid-padding-x">
 	<div class="cell large-8 large-offset-2 medium-10 medium-offset-1 small-12">
-    <p id="notice"><%= notice %></p>
 		<h2>Goals</h2>
+			<div class="cell">	
+				<% if @personalGoals.present? %>
 
-		<% if @goals.where(:goalType => "1").present? %>
+					<h4>Personal Goals</h4>
 
-			<u><b>Outcome Goals</b></u>
+					<% if @personalGoals.where(:goalType => "1").present? %>
 
-			<% outcomeGoals = @goals.where(:goalType => "1") %>
-			<% outcomeGoals.each do |goal| %>
-				<%= render 'goalsView', goal: goal %>
-			<% end %>
+						<u><b>Outcome Goals</b></u>
 
-		<% end %>
+						<% outcomeGoals = @personalGoals.where(:goalType => "1") %>
+						<% outcomeGoals.each do |goal| %>
+							<%= render 'goalsView', goal: goal %>
+						<% end %>
 
-		<% if @goals.where(:goalType => "2").present? %>
+					<% end %>
 
-			<u><b>Performance Goals</b></u>
+					<% if @personalGoals.where(:goalType => "2").present? %>
 
-			<% performanceGoals = @goals.where(:goalType => "2") %>
-			<% performanceGoals.each do |goal| %>
-				<%= render 'goalsView', goal: goal %>
-			<% end %>
+						<u><b>Performance Goals</b></u>
 
-		<% end %>
+						<% performanceGoals = @personalGoals.where(:goalType => "2") %>
+						<% performanceGoals.each do |goal| %>
+							<%= render 'goalsView', goal: goal %>
+						<% end %>
 
-		<% if @goals.where(:goalType => "3").present? %>
+					<% end %>
 
-			<u><b>Process Goals</b></u>
+					<% if @personalGoals.where(:goalType => "3").present? %>
 
-			<% processGoals = @goals.where(:goalType => "3") %>
-			<% processGoals.each do |goal| %>
-				<%= render 'goalsView', goal: goal %>
-			<% end %>
-		<% end %>
+						<u><b>Process Goals</b></u>
 
+						<% processGoals = @personalGoals.where(:goalType => "3") %>
+						<% processGoals.each do |goal| %>
+							<%= render 'goalsView', goal: goal %>
+						<% end %>
+					<% end %>
+				<% end %>
+
+				<% if @teamGoals.present? %>
+
+					<h4>Team Goals</h4>
+
+					<% if @teamGoals.where(:goalType => "1").present? %>
+
+						<u><b>Outcome Goals</b></u>
+
+						<% outcomeGoals = @teamGoals.where(:goalType => "1") %>
+						<% outcomeGoals.each do |goal| %>
+							<%= render 'goalsView', goal: goal %>
+						<% end %>
+
+					<% end %>
+
+					<% if @teamGoals.where(:goalType => "2").present? %>
+
+						<u><b>Performance Goals</b></u>
+
+						<% performanceGoals = @teamGoals.where(:goalType => "2") %>
+						<% performanceGoals.each do |goal| %>
+							<%= render 'goalsView', goal: goal %>
+						<% end %>
+
+					<% end %>
+
+					<% if @teamGoals.where(:goalType => "3").present? %>
+
+						<u><b>Process Goals</b></u>
+
+						<% processGoals = @teamGoals.where(:goalType => "3") %>
+						<% processGoals.each do |goal| %>
+							<%= render 'goalsView', goal: goal %>
+						<% end %>
+					<% end %>
+				<% end %>
+			</div>
 		<%= link_to 'New Goal', new_goal_path, :class => "", remote: true, data: {:"reveal-id" => "myModal"}  %>
 	</div>
 </div>

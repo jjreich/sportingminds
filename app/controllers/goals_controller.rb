@@ -6,9 +6,11 @@ class GoalsController < ApplicationController
   # GET /goals.json
   def index
     if (current_user.has_role? :admin) 
-      @goals = Goal.all.order(:goalEndDate)
+      @personalGoals = Goal.all.order(:goalEndDate)
     elsif (current_user.has_role? :athlete)
-      @goals = Goal.where(:user_id => current_user.id, :active => true).order(:goalEndDate)
+      @personalGoals = Goal.where(:user_id => current_user.id, :active => true, :team_id => nil).order(:goalEndDate)
+      teams = current_user.teams.ids
+      @teamGoals = Goal.where(:active => true).where(team_id: teams).order(:goalEndDate)
     end
   end
 
@@ -37,9 +39,10 @@ class GoalsController < ApplicationController
     @goal = Goal.new(goal_params)
 
     if (current_user.has_role? :admin) 
-      @goals = Goal.all
+      @personalGoals = Goal.all
     elsif (current_user.has_role? :athlete)
-      @goals = Goal.where(:user_id => current_user.id, :active => true).order(:goalEndDate)
+      @personalGoals = Goal.where(:user_id => current_user.id, :active => true, :team_id => nil).order(:goalEndDate)
+      @teamGoals = Goal.where(:user_id => current_user.id, :active => true).where.not(:team_id => nil).order(:goalEndDate)
     end
 
     respond_to do |format|
