@@ -2,6 +2,7 @@ class Goal < ApplicationRecord
 	has_ancestry
 
 	belongs_to :user
+	belongs_to :team
 	has_many :comments
 	has_and_belongs_to_many :journal_entries
 

@@ -27,7 +27,11 @@
 			<% if @user.team_user_relationships.present? %>
 				  <% @user.team_user_relationships.each do |team_user_relationship| %>
 				    <p>
-				      <%= team_user_relationship.team.name %> <%= link_to team_user_relationship, :method => :delete, remote: true do %>
+				    	<%= link_to team_user_relationship.team, remote: true do %>
+				      		<%= team_user_relationship.team.name %> 
+				      	<% end %>
+
+				        <%= link_to team_user_relationship, :method => :delete, remote: true do %>
 				      		<%= image_tag("delete.png", width: "16", :alt => "remove") %>
 				      	<% end %>
 				    </p>

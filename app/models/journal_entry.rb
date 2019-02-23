@@ -1,6 +1,7 @@
 class JournalEntry < ApplicationRecord
 
 	belongs_to :user
+	belongs_to :team
 	has_many :comments
 	has_and_belongs_to_many :goals
 

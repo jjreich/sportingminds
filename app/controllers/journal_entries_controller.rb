@@ -115,6 +115,6 @@ class JournalEntriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def journal_entry_params
-      params.require(:journal_entry).permit(:sport, :dateTimeOfTraining, :duration, :organizedPractice, :trainingAccomplished, :motivationLevel, :performanceLevel, :user_id, :goal_ids => [])
+      params.require(:journal_entry).permit(:sport, :dateTimeOfTraining, :duration, :organizedPractice, :trainingAccomplished, :motivationLevel, :performanceLevel, :user_id, :team_id, :goal_ids => [])
     end
 end
