@@ -44,7 +44,7 @@ class JournalEntriesController < ApplicationController
     if isTeamTraining 
       @team = Team.find(params[:team_id])
       @sport = @team.sport
-      @journal_entry = JournalEntry.new(:user_id => current_user.id, :team_id => params[:team_id], :sport => @team.sport,)
+      @journal_entry = JournalEntry.new(:user_id => current_user.id, :team_id => params[:team_id], :sport => @team.sport)
     end
   end
 
