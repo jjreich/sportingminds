@@ -1,7 +1,7 @@
 class JournalEntry < ApplicationRecord
 
-	belongs_to :user
-	belongs_to :team
+	belongs_to :user, required: false
+	belongs_to :team, required: false
 	has_many :comments
 	has_and_belongs_to_many :goals
 

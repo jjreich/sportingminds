@@ -13,6 +13,10 @@
       <p><%= @team.name %></p>
     <% end %>
 
+    <% if @team.present? %>
+      <%= f.input :practice_players, label: "Players", collection: @team.users, label_method: :fullName, as: :check_boxes, input_html: { multiple: true }  %>
+    <% end %>
+
     <% if @sport.present? %>
       <div class="show">
         <%= f.input :sport %>

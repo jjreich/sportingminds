@@ -41,7 +41,7 @@
 			</h4>
 
 			<% @team.journal_entries.each do |journal_entry| %>
-				<p><%= journal_entry.name %></p>
+				<p><%= journal_entry.trainingAccomplished %></p>
 			<% end %>	
 
 			<% if (current_user.has_role? :coach) || (current_user.has_role? :manager) || (current_user.has_role? :admin) %>
