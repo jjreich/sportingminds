@@ -5,11 +5,19 @@
     <% sportIcon = "" %>
     <% sportIcon = Sport.find(@goal.sport).icon if Sport.find(@goal.sport).icon.present? %>
 
-    <h2><%= @goal.name %> <%= image_tag(sportIcon, width: "36") %></h2> 
+    <h2><%= @goal.name %> <%= image_tag(sportIcon, width: "36") %></h2>
 
-      <p>
-        <b><%= @goal.goalStartDate.strftime ("%m/%d/%y") %> - <%= @goal.goalEndDate.strftime ("%m/%d/%y") %></b>
-      </p>
+      <% if (@goal.goalType == "1" || @goal.goalType == "2" ) %>
+        <p>
+          <b>Deadline: <%= @goal.goalEndDate.strftime ("%m/%d/%y") %></b>
+        </p>
+      <% elsif (@goal.goalType == "3") %>
+        <p>
+          <b><%= @goal.goalStartDate.strftime ("%m/%d/%y") %> - <%= @goal.goalEndDate.strftime ("%m/%d/%y") %></b>
+        </p>
+      <% end %>       
+
+
 
       <% if @goal.goalInterval == "Daily" %>
         <% timePeriod = "day" %>
@@ -104,7 +112,7 @@
       <% linkDisplay = "Add supporting performance or process goal" %>
       <% displayLinkStatus = true %>
     <% elsif @goal.goalType == "2" %>
-      <% linkDisplay = "Add supporting performance or process goal" %>
+      <% linkDisplay = "Add supporting process goal" %>
       <% displayLinkStatus = true %>
     <% end %>
 
