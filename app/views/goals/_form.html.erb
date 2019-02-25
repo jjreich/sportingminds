@@ -92,6 +92,8 @@
       $( "#goalGoalInterval" ).removeClass( "show" ).addClass( "hide" );
       $( "#goalGoalNumber" ).removeClass( "show" ).addClass( "hide" );
       $( "#goalRecurring" ).removeClass( "show" ).addClass( "hide" );
+      $( "#goalTrainingType" ).removeClass( "show" ).addClass( "hide" );
+      $( "#goalTrainingTimeInterval" ).removeClass( "show" ).addClass( "hide" );
     }
     else if ($( "#goal_goalType" ).val() == "2" ) {
       $( "#goalEndDate" ).removeClass( "hide" ).addClass( "show" ); 
@@ -100,12 +102,23 @@
       $( "#goalGoalInterval" ).removeClass( "show" ).addClass( "hide" );
       $( "#goalGoalNumber" ).removeClass( "show" ).addClass( "hide" );
       $( "#goalRecurring" ).removeClass( "show" ).addClass( "hide" );
+      $( "#goalTrainingType" ).removeClass( "show" ).addClass( "hide" );
+      $( "#goalTrainingTimeInterval" ).removeClass( "show" ).addClass( "hide" );
     }
     else if ($( "#goal_goalType" ).val() == "3" ) {
       $( "#goalStartDate" ).removeClass( "hide" ).addClass( "show" );
       $( "#goalEndDate" ).removeClass( "show" ).addClass( "hide" );
       $( "#goalTraining" ).removeClass( "hide" ).addClass( "show" );
       $( "#goalRecurring" ).removeClass( "hide" ).addClass( "show" );
+      if ($( "#goal_recurring" ).is(':checked') ) {
+        $( "#goalEndDate" ).removeClass( "hide" ).addClass( "show" ); 
+      };
+      if ($( "#goal_training" ).is(':checked') ) {
+        $( "#goalTrainingType" ).removeClass( "hide" ).addClass( "show" );
+        $( "#goalGoalInterval" ).removeClass( "hide" ).addClass( "show" );
+        $( "#goalGoalNumber" ).removeClass( "hide" ).addClass( "show" );
+        $( "#goalTrainingTimeInterval" ).removeClass( "hide" ).addClass( "show" );
+      }
     };
   });
   $( "#goal_training" ).change(function() {
