@@ -46,6 +46,9 @@ gem 'simple_form'
 gem 'foundation-rails', '~> 6.4.3'
 gem 'autoprefixer-rails'
 
+gem 'resque'
+gem 'resque-web', require: 'resque_web'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

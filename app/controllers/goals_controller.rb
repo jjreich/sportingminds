@@ -47,6 +47,7 @@ class GoalsController < ApplicationController
 
     respond_to do |format|
       if @goal.save
+        Resque.enqueue(ActiveTest, @goal.id)
         format.js 
         format.html { redirect_to @goal, notice: 'Goal was successfully created.' }
         format.json { render :show, status: :created, location: @goal }
@@ -68,6 +69,7 @@ class GoalsController < ApplicationController
 
     respond_to do |format|
       if @goal.update(goal_params)
+        Resque.enqueue(ActiveTest, @goal.id)
         format.js
         format.html { redirect_to @goal, notice: 'Goal was successfully updated.' }
         format.json { render :show, status: :ok, location: @goal }
