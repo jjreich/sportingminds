@@ -1,3 +1,14 @@
-
-
-production: redis://h:pe7e448dc0b926359a82c2df5c9487cb6596e36d2ce771f3e13baf9d1d62a3ab3@ec2-52-55-34-104.compute-1.amazonaws.com:11319
+#config/redis.yml
+default:
+  host: localhost
+  port: 6379
+development:
+  db: 0
+#  namespace: appname_dev
+test:
+  db: 1
+#  namespace: appname_test
+production:
+  db: 2
+  host: redis://h:pe7e448dc0b926359a82c2df5c9487cb6596e36d2ce771f3e13baf9d1d62a3ab3@ec2-52-55-34-104.compute-1.amazonaws.com:11319
+#  namespace: appname_prod
