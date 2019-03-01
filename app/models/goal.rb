@@ -6,7 +6,7 @@ class Goal < ApplicationRecord
 	has_many :comments
 	has_and_belongs_to_many :journal_entries
 
-	before_save :adjust_completion_percentage, :is_complete?, :is_active?
+	before_save :adjust_completion_percentage, :is_complete?
 
 	private
 
