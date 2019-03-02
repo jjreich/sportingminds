@@ -1,10 +1,11 @@
 development:
   adapter: async
+  url: redis://localhost:6379/1
 
 test:
   adapter: async
 
 production:
   adapter: redis
-  url: redis://localhost:6379/1
+  url: redis://h:pe7e448dc0b926359a82c2df5c9487cb6596e36d2ce771f3e13baf9d1d62a3ab3@ec2-52-55-34-104.compute-1.amazonaws.com:11319
   channel_prefix: sportingminds_production
