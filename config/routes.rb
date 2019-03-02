@@ -1,5 +1,6 @@
 require "resque_web"
 
+
 Rails.application.routes.draw do
   resources :team_user_relationships
   resources :teams

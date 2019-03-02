@@ -2,15 +2,25 @@
 <% goalTimeInterval = (goal.goalEndDate - goal.goalStartDate).to_f %>
 <% daysSinceGoalStartDate = (Date.today - goal.goalStartDate).to_f %>
 <% timePercentagePassedForGoal = daysSinceGoalStartDate/goalTimeInterval %>
-	<% if goal.goalType == "1" || goal.goalType == "2" %>
-	<% elsif goal.percentComplete >= 1.0 or goal.complete == true %>
+<% className = "" %>
+<% if goal.goalType == "1" || goal.goalType == "2" %>
+	<% if goal.complete == true %>
 		<% className = "myBlueButton" %>
-	<% elsif (goal.percentComplete >= timePercentagePassedForGoal) %>
+	<% elsif timePercentagePassedForGoal < 0.75 %>
 		<% className = "myGreenButton" %>
-	<% elsif (goal.percentComplete >= timePercentagePassedForGoal-0.1) %>
+	<% elsif timePercentagePassedForGoal < 1.0 %>
 		<% className = "myYellowButton" %>
 	<% else %>
 		<% className = "myRedButton" %>
+	<% end %>
+<% elsif goal.percentComplete >= 1.0 or goal.complete == true %>
+	<% className = "myBlueButton" %>
+<% elsif (goal.percentComplete >= timePercentagePassedForGoal) %>
+	<% className = "myGreenButton" %>
+<% elsif (goal.percentComplete >= timePercentagePassedForGoal-0.1) %>
+	<% className = "myYellowButton" %>
+<% else %>
+	<% className = "myRedButton" %>
 <% end %>
 
 <% isCoach = current_user.has_role? :coach %>
