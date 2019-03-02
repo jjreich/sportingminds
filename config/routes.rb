@@ -1,4 +1,4 @@
-require "resque_web"
+require 'sidekiq/web'
 
 
 Rails.application.routes.draw do
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :goal_types
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  mount ResqueWeb::Engine => "/resque_web"
+  mount Sidekiq::Web, at: '/sidekiq'
 
   root 'welcome#index'
 

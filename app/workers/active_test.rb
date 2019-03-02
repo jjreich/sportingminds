@@ -1,6 +1,6 @@
 class ActiveTest
-	@queue = :active_test_queue
-	def self.perform(goal_id)
+  	include Sidekiq::Worker
+	def perform(goal_id)
 		goal = Goal.find(goal_id)
 		if (Date.today <= goal.goalEndDate && Date.today >= goal.goalStartDate)
 			goal.active = true

@@ -51,6 +51,10 @@ gem 'resque-web', require: 'resque_web'
 gem 'resque-scheduler'
 gem 'redis'
 
+gem 'sidekiq'
+gem 'sinatra', require: false
+gem 'slim'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

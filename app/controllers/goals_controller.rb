@@ -47,7 +47,7 @@ class GoalsController < ApplicationController
 
     respond_to do |format|
       if @goal.save
-        Resque.enqueue(ActiveTest, @goal.id)
+        ActiveTest.perform_async(@goal.id)
         format.js 
         format.html { redirect_to @goal, notice: 'Goal was successfully created.' }
         format.json { render :show, status: :created, location: @goal }
