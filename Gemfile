@@ -46,12 +46,10 @@ gem 'simple_form'
 gem 'foundation-rails', '~> 6.4.3'
 gem 'autoprefixer-rails'
 
-gem 'resque'
-gem 'resque-web', require: 'resque_web'
-gem 'resque-scheduler'
 gem 'redis'
 
 gem 'sidekiq'
+gem 'sidekiq-cron'
 gem 'sinatra', require: false
 gem 'slim'
 
