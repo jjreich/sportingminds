@@ -1,7 +1,3 @@
-hello_world:
-    cron: '* * * * *'   # Runs once per minute
-    class: HelloWorld
-
 process_goal_date_checker:
     cron: '0 0 * * *' 
     class: ProcessGoalDateChecker
