@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190224000142) do
+ActiveRecord::Schema.define(version: 20190303234903) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20190224000142) do
     t.string "name"
     t.integer "trainingTimeInterval"
     t.integer "team_id"
+    t.date "recurringEndDate"
     t.index ["ancestry"], name: "index_goals_on_ancestry"
     t.index ["team_id"], name: "index_goals_on_team_id"
     t.index ["user_id"], name: "index_goals_on_user_id"

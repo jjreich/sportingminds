@@ -3,5 +3,5 @@ hello_world:
     class: HelloWorld
 
 process_goal_date_checker:
-    cron: '*/2 * * * *'   # Runs once per minute
+    cron: '0 0 * * *' 
     class: ProcessGoalDateChecker
