@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :inverse_accountability_partners, :through => :inverse_accountability_partnerships, :source => :user
   has_many :team_user_relationships
   has_many :teams, :through => :team_user_relationships
+  has_many :viewed_comments
 
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable

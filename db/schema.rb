@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190303234903) do
+ActiveRecord::Schema.define(version: 20190307184043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -159,6 +159,16 @@ ActiveRecord::Schema.define(version: 20190303234903) do
     t.index ["role_id"], name: "index_users_roles_on_role_id"
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
     t.index ["user_id"], name: "index_users_roles_on_user_id"
+  end
+
+  create_table "viewed_comments", force: :cascade do |t|
+    t.integer "comment_id"
+    t.integer "user_id"
+    t.datetime "last_read_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_viewed_comments_on_comment_id"
+    t.index ["user_id"], name: "index_viewed_comments_on_user_id"
   end
 
 end

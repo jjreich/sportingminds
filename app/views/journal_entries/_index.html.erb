@@ -6,9 +6,20 @@
       <div class="grid-x grid-padding-x">
         <div class="cell large-12">
           <p class="text-left"><div class="inlineBlock"><b><%= journal_entry.dateTimeOfTraining.strftime ("%m/%d/%y %l:%M%P") %> (<%= journal_entry.duration %> minutes)</b> - <%= journal_entry.trainingAccomplished %> &nbsp</div>
-
+            <% commentColor = "gray" %>
+            <% if journal_entry.comments.present? %>
+              <% lastComment = journal_entry.comments.order(:created_at).last %>
+              <% if lastComment.viewed_comments.where(:user_id => current_user.id).present? %>
+                <% lastCommentView = lastComment.viewed_comments.where(:user_id => current_user.id).order(:created_at).last %>
+                <% if lastCommentView.created_at < lastComment.created_at %>
+                  <% commentColor = "red" %>
+                <% end %> 
+              <% else %>
+                <% commentColor = "red" %>  
+              <% end %>
+            <% end %> 
             <% if commentCount > 0 %>
-              <div class="comments_container"><%= commentCount %></div>&nbsp&nbsp
+              <div class="comments_container" style="color:<%= commentColor %>;"><%= commentCount %></div>&nbsp&nbsp
             <% end %>
 
             <%= link_to journal_entry, :class => "", remote: true, data: {:"reveal-id" => "myModal"} do %> 

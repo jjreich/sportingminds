@@ -14,6 +14,9 @@ class JournalEntriesController < ApplicationController
   # GET /journal_entries/1
   # GET /journal_entries/1.json
   def show
+    @journal_entry.comments.each do |comment|
+      ViewedComment.create :user_id => current_user.id, :comment_id => comment.id
+    end
   end
 
   # GET /journal_entries/new
