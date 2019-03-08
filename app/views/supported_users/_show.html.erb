@@ -65,8 +65,21 @@
 		        	<div class="journalEntry">
 			          <p><b><div class="inlineBlock"><%= journal_entry.dateTimeOfTraining.strftime ("%m/%d/%y %l:%M%P") %> (<%= journal_entry.duration %> minutes)</b> - <%= journal_entry.trainingAccomplished %> &nbsp</div>
 
+			          	<% commentColor = "gray" %>
+			            <% if journal_entry.comments.present? %>
+			              <% lastComment = journal_entry.comments.order(:created_at).last %>
+			              <% if lastComment.viewed_comments.where(:user_id => current_user.id).present? %>
+			                <% lastCommentView = lastComment.viewed_comments.where(:user_id => current_user.id).order(:created_at).last %>
+			                <% if lastCommentView.created_at < lastComment.created_at %>
+			                  <% commentColor = "red" %>
+			                <% end %> 
+			              <% else %>
+			                <% commentColor = "red" %>  
+			              <% end %>
+			            <% end %> 
+
 			           	<% if commentCount > 0 %>
-	              			<div class="comments_container"><%= commentCount %></div>&nbsp
+	              			<div class="comments_container" style="color:<%= commentColor %>;"><%= commentCount %></div>&nbsp
 	            		<% end %>
 
 			            <%= link_to journal_entry, :class => "", remote: true do %> 
