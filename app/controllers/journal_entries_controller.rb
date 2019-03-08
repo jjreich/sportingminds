@@ -90,30 +90,43 @@ class JournalEntriesController < ApplicationController
       @journal_entries = JournalEntry.where(:user_id => current_user.id).order(:dateTimeOfTraining).reverse
     end
 
-    if @journal_entry.practice_players.present?
-      @journal_entry.practice_players.each do |practice_player|
-        journal_entry = JournalEntry.new(journal_entry_params)
-        if practice_player != nil
-          journal_entry.practice_players = []
-          journal_entry.team_id = nil
-          journal_entry.user_id = practice_player
-          journal_entry.save
+    if @journal_entry.team_id.present?
+      if @journal_entry.practice_players.present?
+        @journal_entry.practice_players.each do |practice_player|
+          journal_entry = JournalEntry.new(journal_entry_params)
+          if practice_player != nil
+            journal_entry.practice_players = []
+            journal_entry.team_id = nil
+            journal_entry.user_id = practice_player
+            journal_entry.save
+          end
+        end
+
+        respond_to do |format|
+          if @journal_entry.save
+            format.js 
+            format.html { redirect_to @journal_entry, notice: 'Journal entry was successfully created.' }
+            format.json { render :show, status: :created, location: @journal_entry }
+          else
+            format.html { render :new }
+            format.json { render json: @journal_entry.errors, status: :unprocessable_entity }
+          end
+        end
+
+      else
+        @journal_entry.user_id = nil
+        respond_to do |format|
+          if @journal_entry.save
+            format.js 
+            format.html { redirect_to @journal_entry, notice: 'Journal entry was successfully created.' }
+            format.json { render :show, status: :created, location: @journal_entry }
+          else
+            format.html { render :new }
+            format.json { render json: @journal_entry.errors, status: :unprocessable_entity }
+          end
         end
       end
-
-      respond_to do |format|
-        if @journal_entry.save
-          format.js 
-          format.html { redirect_to @journal_entry, notice: 'Journal entry was successfully created.' }
-          format.json { render :show, status: :created, location: @journal_entry }
-        else
-          format.html { render :new }
-          format.json { render json: @journal_entry.errors, status: :unprocessable_entity }
-        end
-      end
-
     else
-      @journal_entry.user_id = nil
       respond_to do |format|
         if @journal_entry.save
           format.js 
