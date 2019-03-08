@@ -1,6 +1,6 @@
 <div class="grid-x grid-padding-x">
 	<div class="cell large-8 large-offset-2 medium-10 medium-offset-1 small-12">
-		<h2>Goals</h2>
+		<h2><div id="goalsModal">Goals</div></h2>
 			<div class="cell">	
 				
 				<h4>Personal Goals</h4>
@@ -90,6 +90,13 @@
 
 	</div>
 </div>
+
+<script>
+	$( "#goalsModal" ).click(function() {
+		$('#helpModal').html("<%= j (render 'goals_modal') %>");
+  		$('#helpModal').foundation('open');
+	});
+</script>
 
 <br>
 
