@@ -12,7 +12,7 @@
 
 					<% if @personalGoals.where(:goalType => "1").present? %>
 
-						<u><b>Outcome Goals</b></u>
+						<u><b><div id="objectiveGoalsModal">Objective Goals</div></b></u>
 
 						<% outcomeGoals = @personalGoals.where(:goalType => "1") %>
 						<% outcomeGoals.each do |goal| %>
@@ -23,7 +23,7 @@
 
 					<% if @personalGoals.where(:goalType => "2").present? %>
 
-						<u><b>Performance Goals</b></u>
+						<u><b><div id="performanceGoalsModal">Performance Goals</div></b></u>
 
 						<% performanceGoals = @personalGoals.where(:goalType => "2") %>
 						<% performanceGoals.each do |goal| %>
@@ -34,7 +34,7 @@
 
 					<% if @personalGoals.where(:goalType => "3").present? %>
 
-						<u><b>Process Goals</b></u>
+						<u><b><div id="processGoalsModal">Process Goals</div></b></u>
 
 						<% processGoals = @personalGoals.where(:goalType => "3") %>
 						<% processGoals.each do |goal| %>
@@ -94,6 +94,18 @@
 <script>
 	$( "#goalsModal" ).click(function() {
 		$('#helpModal').html("<%= j (render 'goals_modal') %>");
+  		$('#helpModal').foundation('open');
+	});
+	$( "#objectiveGoalsModal" ).click(function() {
+		$('#helpModal').html("<%= j (render 'objective_goals_modal') %>");
+  		$('#helpModal').foundation('open');
+	});
+	$( "#performanceGoalsModal" ).click(function() {
+		$('#helpModal').html("<%= j (render 'performance_goals_modal') %>");
+  		$('#helpModal').foundation('open');
+	});
+	$( "#processGoalsModal" ).click(function() {
+		$('#helpModal').html("<%= j (render 'process_goals_modal') %>");
   		$('#helpModal').foundation('open');
 	});
 </script>
