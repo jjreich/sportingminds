@@ -24,7 +24,7 @@
       </div>
 
       <div class="hide cell" id="goalStartDate">
-        <%= f.input :goalStartDate, label: "When will this process goal start?"  %>
+        <%= f.input :goalStartDate, as: :string, input_html: {:class => 'datePicker'}, label: "When will this process goal start?"  %>
       </div>
     </div>
 
@@ -59,11 +59,11 @@
     </div>
 
     <div class="hide cell" id="goalEndDate">
-      <%= f.input :goalEndDate, label: "End Date"  %>
+      <%= f.input :goalEndDate, as: :string, input_html: {:class => 'datePicker'}, label: "End Date"  %>
     </div>
 
     <div class="hide cell" id="goalRecurringEndDate">
-      <%= f.input :recurringEndDate, label: "End Date of Recurring Goals"  %>
+      <%= f.input :recurringEndDate, as: :string, input_html: {:class => 'datePicker'}, label: "End Date of Recurring Goals"  %>
     </div>
 
     <div class="hide">
@@ -162,6 +162,10 @@
     else if ($( "#goal_goalInterval" ).val() == "Annually" ) {
       $( ".goal_goalNumber label" ).text( "Number to Training Events per Year" );    
     };
+  });
+
+  $(function() {
+    $(".datePicker").datepicker();
   });
 
 </script>

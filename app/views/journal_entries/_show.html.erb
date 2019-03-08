@@ -28,10 +28,20 @@
 
     <p>
       <strong>Motivationlevel:</strong>
-      <%= @journal_entry.motivationLevel %>
     </p>
 
-    <div class="warning progress" role="progressbar" tabindex="0" aria-valuenow="<%= @journal_entry.motivationLevel %>" aria-valuemin="0" aria-valuetext="<%= @journal_entry.motivationLevel %>" aria-valuemax="10">
+    <% progressClass = "" %>
+    <% if @journal_entry.motivationLevel == 10 %>
+
+    <% elsif @journal_entry.motivationLevel > 7 %>
+      <% progressClass = "success" %>
+    <% elsif @journal_entry.motivationLevel > 4 %>
+      <% progressClass = "warning" %>
+    <% elsif @journal_entry.motivationLevel <= 4 %>
+      <% progressClass = "alert" %>  
+    <% end %>
+
+    <div class="<%= progressClass %> progress" role="progressbar" tabindex="0" aria-valuenow="<%= @journal_entry.motivationLevel %>" aria-valuemin="0" aria-valuetext="<%= @journal_entry.motivationLevel %>" aria-valuemax="10">
       <span class="progress-meter" style="width: <%= @journal_entry.motivationLevel*10 %>%">
         <p class="progress-meter-text"><%= @journal_entry.motivationLevel %></p>
       </span>
@@ -39,10 +49,20 @@
 
     <p>
       <strong>Performancelevel:</strong>
-      <%= @journal_entry.performanceLevel %>
     </p>
 
-    <div class="alert progress" role="progressbar" tabindex="0" aria-valuenow="<%= @journal_entry.performanceLevel %>" aria-valuemin="0" aria-valuetext="<%= @journal_entry.performanceLevel %>" aria-valuemax="10">
+    <% progressClass = "" %>
+    <% if @journal_entry.performanceLevel == 10 %>
+
+    <% elsif @journal_entry.performanceLevel > 7 %>
+      <% progressClass = "success" %>
+    <% elsif @journal_entry.performanceLevel > 4 %>
+      <% progressClass = "warning" %>
+    <% elsif @journal_entry.performanceLevel <= 4 %>
+      <% progressClass = "alert" %>  
+    <% end %>
+
+    <div class="<%= progressClass %> progress" role="progressbar" tabindex="0" aria-valuenow="<%= @journal_entry.performanceLevel %>" aria-valuemin="0" aria-valuetext="<%= @journal_entry.performanceLevel %>" aria-valuemax="10">
       <span class="progress-meter" style="width: <%= @journal_entry.performanceLevel*10 %>%">
         <p class="progress-meter-text"><%= @journal_entry.performanceLevel %></p>
       </span>
