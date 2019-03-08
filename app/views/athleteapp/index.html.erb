@@ -30,7 +30,21 @@
 	<% if current_user.has_role? :athlete %>
 
 		<div id="applicationContent">
-
+			<div class="grid-x grid-margin-x">
+				<div class="cell large-8 large-offset-2 medium-10 medium-offset-1 small-10 small-offset-1">
+					<%= image_tag("wordle.png", width: "100%", :alt => "Sporting Minds") %>
+				</div>
+			</div>
+			<div class="grid-x grid-margin-x">
+				<div class="cell large-8 large-offset-2 medium-10 medium-offset-1 small-10 small-offset-1 text-center">
+					<h2>Athlete Goals Tracking and Training Log Application</h2>
+				</div>
+			</div>
+			<div class="grid-x grid-margin-x">
+				<div class="cell large-8 large-offset-2 medium-10 medium-offset-1 small-10 small-offset-1 text-left">
+					<p>&nbsp&nbsp&nbsp This application is designed to help athletes reach their training and performance goals.  By providing a tracking mechanism for the goals and the ability to log training, athletes can easily see their progression and gain confidence in their ability to shape their own athletic destiny.  Additionally, the app provides the ability to share progress towards goals with coaches, teammates and other accounability partners and get daily feedback to stay on track.</p>
+				</div>
+			</div>
 		</div>
 	    
 	<% end %>
