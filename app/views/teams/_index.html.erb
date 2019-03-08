@@ -17,7 +17,7 @@
 
 </div>
 
-<% if current_user.has_role? :coach %>
+<% if (current_user.has_role? :coach) || (current_user.has_role? :admin) %>
 
   <%= link_to 'New Team', new_team_path %>
 

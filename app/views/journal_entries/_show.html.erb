@@ -36,12 +36,16 @@
       <%= @journal_entry.performanceLevel %>
     </p>
 
-    <b>Associated Goals:</b>
+    <% if @journal_entry.goals.present? %>
 
-    <% @journal_entry.goals.where(:active => true).each do |goal| %>
-      <%= link_to goal, :class => "", remote: true do %>
-        <%= goal.name %></br>
+      <b>Associated Goals:</b>
+
+      <% @journal_entry.goals.where(:active => true).each do |goal| %>
+        <%= link_to goal, :class => "", remote: true do %>
+          <%= goal.name %></br>
+        <% end %>
       <% end %>
+
     <% end %>
 
     </br>
