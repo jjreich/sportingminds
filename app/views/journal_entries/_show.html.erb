@@ -31,10 +31,22 @@
       <%= @journal_entry.motivationLevel %>
     </p>
 
+    <div class="warning progress" role="progressbar" tabindex="0" aria-valuenow="<%= @journal_entry.motivationLevel %>" aria-valuemin="0" aria-valuetext="<%= @journal_entry.motivationLevel %>" aria-valuemax="10">
+      <span class="progress-meter" style="width: <%= @journal_entry.motivationLevel*10 %>%">
+        <p class="progress-meter-text"><%= @journal_entry.motivationLevel %></p>
+      </span>
+    </div>
+
     <p>
       <strong>Performancelevel:</strong>
       <%= @journal_entry.performanceLevel %>
     </p>
+
+    <div class="alert progress" role="progressbar" tabindex="0" aria-valuenow="<%= @journal_entry.performanceLevel %>" aria-valuemin="0" aria-valuetext="<%= @journal_entry.performanceLevel %>" aria-valuemax="10">
+      <span class="progress-meter" style="width: <%= @journal_entry.performanceLevel*10 %>%">
+        <p class="progress-meter-text"><%= @journal_entry.performanceLevel %></p>
+      </span>
+    </div>
 
     <% if @journal_entry.goals.present? %>
 

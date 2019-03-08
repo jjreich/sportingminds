@@ -6,7 +6,7 @@ class Goal < ApplicationRecord
 	has_many :comments
 	has_and_belongs_to_many :journal_entries
 
-	before_save :adjust_completion_percentage, :is_complete?
+	before_save :adjust_completion_percentage, :adjust_goal_end_date, :is_active?, :is_complete?
 
 	private
 
@@ -32,6 +32,22 @@ class Goal < ApplicationRecord
 		else
 			self.percentComplete = 0
 		end
+	end
+
+	def adjust_goal_end_date
+
+		if self.goalType == "3"
+			if self.goalInterval == "Daily"
+				self.goalEndDate = self.goalStartDate
+			elsif self.goalInterval == "Weekly"
+				self.goalEndDate = self.goalStartDate + 6.days
+			elsif self.goalInterval == "Monthly"
+				self.goalEndDate = self.goalStartDate + 1.month
+			elsif self.goalInterval == "Annually"
+				self.goalEndDate = self.goalStartDate + 1.year
+			end
+		end
+
 	end
 
 	def is_complete?

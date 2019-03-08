@@ -62,6 +62,10 @@
       <%= f.input :goalEndDate, label: "End Date"  %>
     </div>
 
+    <div class="hide cell" id="goalRecurringEndDate">
+      <%= f.input :recurringEndDate, label: "End Date of Recurring Goals"  %>
+    </div>
+
     <div class="hide">
       <%= f.input :percentComplete %>
     </div>
@@ -92,6 +96,7 @@
       $( "#goalRecurring" ).removeClass( "show" ).addClass( "hide" );
       $( "#goalTrainingType" ).removeClass( "show" ).addClass( "hide" );
       $( "#goalTrainingTimeInterval" ).removeClass( "show" ).addClass( "hide" );
+      $( "#goalRecurringEndDate" ).removeClass( "show" ).addClass( "hide" ); 
     }
     else if ($( "#goal_goalType" ).val() == "2" ) {
       $( "#goalEndDate" ).removeClass( "hide" ).addClass( "show" ); 
@@ -102,6 +107,7 @@
       $( "#goalRecurring" ).removeClass( "show" ).addClass( "hide" );
       $( "#goalTrainingType" ).removeClass( "show" ).addClass( "hide" );
       $( "#goalTrainingTimeInterval" ).removeClass( "show" ).addClass( "hide" );
+      $( "#goalRecurringEndDate" ).removeClass( "show" ).addClass( "hide" );
     }
     else if ($( "#goal_goalType" ).val() == "3" ) {
       $( "#goalStartDate" ).removeClass( "hide" ).addClass( "show" );
@@ -109,7 +115,7 @@
       $( "#goalTraining" ).removeClass( "hide" ).addClass( "show" );
       $( "#goalRecurring" ).removeClass( "hide" ).addClass( "show" );
       if ($( "#goal_recurring" ).is(':checked') ) {
-        $( "#goalEndDate" ).removeClass( "hide" ).addClass( "show" ); 
+        $( "#goalRecurringEndDate" ).removeClass( "hide" ).addClass( "show" ); 
       };
       if ($( "#goal_training" ).is(':checked') ) {
         $( "#goalTrainingType" ).removeClass( "hide" ).addClass( "show" );
@@ -136,10 +142,10 @@
 
   $( "#goal_recurring" ).change(function() {
     if ($( "#goal_recurring" ).is(':checked') ) {
-      $( "#goalEndDate" ).removeClass( "hide" ).addClass( "show" );
+      $( "#goalRecurringEndDate" ).removeClass( "hide" ).addClass( "show" );
     }
     else {
-      $( "#goalEndDate" ).removeClass( "show" ).addClass( "hide" );
+      $( "#goalRecurringEndDate" ).removeClass( "show" ).addClass( "hide" );
     };
   });
 
